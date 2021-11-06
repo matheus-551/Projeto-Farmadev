@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Famadev</title>
+    <link rel="stylesheet" type="text/css" href="../css/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	 <header>
+        <!--CONTAINER DA LOGO-->
+        <div class="ContainerLogo">
+            <img class="logo" src="../img/LogotipoFarmadev1.5.png" alt="Logo da Farmadev">
+        </div>
+        <!--NAVBAR-->
+        <div class="NavBar">
+            <!--BARRA DE PESQUISA-->
+            <form  class="FormBusca" action="" method="#">
+                <input type="search" name="pesquisa" placeholder="pesquisar...">
+                <input type="submit" value="Buscar">
+            </form>
+            <!--MENU DROPDOWN (MENU SUSPENSO)-->
+            <div class="dropdown">
+                <button class="DropBtn"><img src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/40/000000/external-user-interface-kiranshastry-lineal-kiranshastry.png"/></button>
+                <div class="DropdownContent">
+                    <a href="/login">Login</a>
+                    <a href="/CadastroAcesso">Cadastro</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!--CONTAINER PRINCIPAL ONDE FICARÁ OS ELEMENTOS DO CAROUSEL-->
+        <div id="MainCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="../img/SecondImageCarousel.jfif">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="../img/FirstImageCarousel.jpg">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#MainCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              </a>
+              <a class="carousel-control-next" href="#MainCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              </a>
+        </div>
+    </main>
+
+    <!--IMPORTAÇÃO DOS SCRIPTS DO BOOTSTRAP-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+</body>
+</html>

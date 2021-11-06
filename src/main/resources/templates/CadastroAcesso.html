@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Farmadev</title>
+	<link rel="stylesheet" type="text/css" href="../css/form.css">
+</head>
+<body>
+	<main>
+		<h1>Criar Conta</h1>
+		<div class="social-media">
+			<a href="#"> <img src="../img/google.png" alt="Google"></a>
+			<a href="#"> <img src="../img/facebook.png" alt="Facebook"></a> 
+			<a href="#"> <img src="../img/linkedin.png" alt="Linkedin"></a>
+		</div>
+
+		<div class="alternative">
+			<span>OU</span>
+		</div>
+
+		<form action="/SalvaFormAcesso" method="post">
+			
+			<input type="hidden" id="TipoPerfil" name="TipoPerfil" value="01">
+		
+			<label for="login">Login</label> 
+			<input type="text" id="login" name="login">
+
+			<label for="password">Senha</label> 
+			<input type="password" id="senha" name="senha"> 
+				
+			<input type="submit" value="Próximo" id="button">
+		</form>
+
+		<a class="link" href="/login">Já tenho uma conta</a> 
+	</main>
+
+	<section class="images">
+		<img src="../img/LogotipoFarmadev1.5.png" />
+	</section>
+</body>
+</html>
