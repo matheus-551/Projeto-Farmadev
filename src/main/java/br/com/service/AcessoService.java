@@ -13,15 +13,18 @@ public class AcessoService {
 	private AcessoRepository acessoRepository;
 	
 	//Realiza a busca do acesso através do login e senha
-	public boolean BuscaAcesso(String login, String senha) {	
+	public Acesso BuscaAcesso(String login, String senha) {	
 		//Verifica se os parâmetros passados existem no banco de dados
 		Acesso acesso = this.acessoRepository.findByLoginAndSenha(login, senha);
 		
-		if(acesso == null) {
-			return false;
+		//Retorna null caso o objeto não exista na base de dados
+		if (acesso == null) {
+			return null;
 		}else {
-			return true;
+			// retorna o obj acesso existente no banco de dados
+			return acesso;
 		}
+
 	}
 	
 	//Realiza a persistência do objeto "acesso" no BD

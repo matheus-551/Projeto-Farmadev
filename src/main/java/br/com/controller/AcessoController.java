@@ -1,5 +1,7 @@
 package br.com.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,18 +43,36 @@ public class AcessoController {
 		return"redirect:/CadastroPerfil";
 	}
 	
+	/*
+	 * ADICIONAR O HTTPSESSION NO METÓDO DE LOGIN, PARA ARMAZENAR 
+	 * O USUÁRIO NA SESSÃO
+	 * */
+	
 	//Realiza o login do usuário
 	@PostMapping("/EfetuaLogin")
-	public String RealizaLogin(Acesso acesso, RedirectAttributes ra) {
+	public String RealizaLogin(Acesso acesso, RedirectAttributes ra, HttpSession session) {
+			
+		acesso = this.acessoService.BuscaAcesso(acesso.getLogin(), acesso.getSenha());
 		
-		boolean UsuarioExistente = this.acessoService.BuscaAcesso(acesso.getLogin(), acesso.getSenha());
-		
-		if (UsuarioExistente == true) {
-			return"redirect:/HomePageCliente";
+		if(acesso != null) {
+			session.setAttribute("SessionAcesso", acesso);
+			return"redirect:/admin/HomePageCliente";
 		}else {
-			ra.addFlashAttribute("MensagemFlash", "Login ou senha inválido");
+			ra.addFlashAttribute("MensagemFlash", "Usuário ou senha inválidos");
 			return"redirect:/login";
 		}
 	}
 	
+	//Realiza o logout 
+	@GetMapping("/sair") 
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return"redirect:/";
+	}
+	
+	//Realiza o bloqueio de acesso
+	@GetMapping("/AcessoNegado")
+	public String AcessoNegado() {
+		return "redirect:/";
+	}
 }

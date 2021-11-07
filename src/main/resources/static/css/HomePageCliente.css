@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.ContainerCard {
+    margin-left: 4px;
+    display: flex;
+    position: relative;
+    top: 180px;
+}
+
+.card {
+    width: 260px;
+    height: 360px;
+
+    margin-left: 4px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    
+    border: 1px solid #44444455;
+    border-radius: 4px;
+
+    box-shadow: 0px 8px 16px 0px #00000013;
+}
+
+.DetailsItems {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    border-top: 1px solid #44444455;
+}
+
+.BtnComprar {
+    width: 80px;
+
+    padding: 2px;
+
+    position: relative;
+    left: 67%;
+    top: 10px;
+
+    border: none;
+    border-radius: 4px;
+
+    text-align: center;
+    text-decoration: none;
+
+    color: #ffff;
+    background: #0C2D6A;
+}
+
+body {
+    width: 100%;
+}

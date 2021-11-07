@@ -36,7 +36,7 @@ public class MainController {
 		return"redirect:/";
 	}
 
-	@GetMapping("/HomePageCliente")
+	@GetMapping("/admin/HomePageCliente")
 	public String exibiHomePageCliente() {
 		return"HomePageCliente";
 	}

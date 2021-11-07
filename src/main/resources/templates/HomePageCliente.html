@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html>
-<head xmlns:th="www.thymeleaf.org">
-	<meta charset="utf-8">
-	<title>Farmadev</title>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Famadev</title>
+    <link rel="stylesheet" type="text/css" href="../css/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="../css/HomePageCliente.css">
 </head>
 <body>
-	<h1>Cliente Logado</h1>
+    <header>
+        <div class="ContainerLogo">
+            <img class="logo" src="../img/LogotipoFarmadev1.5.png" alt="Logo da Farmadev">
+        </div>
+        <div class="NavBar">
+            <form  class="FormBusca" action="" method="#">
+                <input type="search" name="pesquisa" placeholder="pesquisar...">
+                <input type="submit" value="Buscar">
+            </form>
+            <div class="NavGroup">
+                <a href="carrinho.html"><img src="https://img.icons8.com/dotty/40/000000/shopping-cart.png"/></a>
+                <div class="dropdown">
+                    <button class="DropBtn"><img src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/40/000000/external-user-interface-kiranshastry-lineal-kiranshastry.png"/></button>
+                    <div class="DropdownContent">
+                        <a href="/sair">Sair</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="ContainerCard">
+            <div class="card">
+                <img src="../img/remedio.jfif">
+                <div class="DetailsItems">
+                    <h2>Remedio A</h2>
+                    <span>R$ 1999.00</span>
+                    <a class="BtnComprar" href="DetalhesProduto.html">Comprar</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../img/remedio.jfif">
+                <div class="DetailsItems">
+                    <h2>Remedio A</h2>
+                    <span>R$ 1999.00</span>
+                    <a class="BtnComprar" href="DetalhesProduto.html">Comprar</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../img/remedio.jfif">
+                <div class="DetailsItems">
+                    <h2>Remedio A</h2>
+                    <span>R$ 1999.00</span>
+                    <a class="BtnComprar" href="DetalhesProduto.html">Comprar</a>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
