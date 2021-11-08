@@ -16,6 +16,8 @@ public class Acesso {
 	@Column(nullable = false)
 	private String senha;
 	private Integer TipoPerfil;
+	@Column(nullable = false)
+	private boolean status;
 	
 	public Acesso() {
 		
@@ -52,9 +54,18 @@ public class Acesso {
 	public void setTipoPerfil(Integer tipoPerfi) {
 		TipoPerfil = tipoPerfi;
 	}
+	
+	public boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	@Override
 	public String toString() {
-		return "Acesso [id=" + id + ", login=" + login + ", senha=" + senha + ", TipoPerfil=" + TipoPerfil + "]";
+		return "Acesso [id=" + id + ", login=" + login + ", senha=" + senha + ", TipoPerfil=" + TipoPerfil + ", status="
+				+ status + "]";
 	}
 }

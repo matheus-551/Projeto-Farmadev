@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Famadev</title>
+    <link rel="stylesheet" type="text/css" href="../css/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="../css/MeuPerfil.css">
+</head>
+<body>
+    <header>
+        <div class="ContainerLogo">
+            <img class="logo" src="../img/LogotipoFarmadev1.5.png" alt="Logo da Farmadev">
+        </div>
+        <div class="NavBar">
+            <div class="NavGroup">
+                <a href="/admin/HomePageCliente">Voltar</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="ProfileContainer">
+            <h2 th:text="${session.ClienteLogado.NomeCompleto}"></h2>
+
+            <div class="ControlGroup">
+                <span>
+                    <h4>CPF: </h4>
+                    <span th:text="${session.ClienteLogado.cpf}"></span>
+                </span>
+                <span>
+                    <h4>Email: </h4>
+                	<span th:text="${session.ClienteLogado.email}"></span>
+                </span>
+                <span>
+                    <h4>Data de nascimento: </h4>
+                    <span th:text="${session.ClienteLogado.DataNascimento}"></span>
+                </span>
+            </div>
+            <div class="ControlGroup">
+                <span>
+                    <h4>CEP :</h4>
+                    <span th:text="${session.ClienteLogado.endereco.cep}"></span>
+                </span>
+                <span>
+                    <h4>Rua :</h4>
+                    <span th:text="${session.ClienteLogado.endereco.rua}"></span>
+                </span>
+                <span>
+                    <h4>Bairro :</h4>
+                    <span th:text="${session.ClienteLogado.endereco.bairro}"></span>
+                </span>
+                <span>
+                    <h4>Número :</h4>
+                   	<span th:text="${session.ClienteLogado.endereco.numero}"></span>
+                </span>
+                <span>
+                    <h4>Complemento :</h4>
+                    <span th:text="${session.ClienteLogado.endereco.complemento}"></span>
+                </span>
+            </div>
+            <div class="GroupButton">
+                <a th:href="|/admin/AlterarDadosCliente?id=${session.ClienteLogado.id}|">Alterar dados</a> ||
+                <a th:href="|/DesabilitarAcessoCliente?id=${session.ClienteLogado.acesso.id}|">Desativar perfil</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

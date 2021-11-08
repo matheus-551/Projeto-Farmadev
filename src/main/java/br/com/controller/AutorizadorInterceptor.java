@@ -12,7 +12,7 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 	        throws Exception {
 		
-		if (request.getSession().getAttribute("SessionAcesso") == null) {
+		if (request.getSession().getAttribute("ClienteLogado") == null) {
 			request.getRequestDispatcher("/AcessoNegado").forward(request, response);
 			return false;
 		} else {

@@ -7,13 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import br.com.model.Cliente;
 import br.com.model.Endereco;
-import br.com.service.UsuarioService;
+import br.com.service.ClienteService;
 
 @Controller
 public class MainController {
 	
-	@Autowired
-	private UsuarioService usuarioService;
+
 	
 	//Exibi a tela principal
 	@GetMapping("/")
@@ -21,26 +20,12 @@ public class MainController {
 		return"index";
 	}
 	
-	//Exibi a tela de Cadastro de perfil do Clinete
-	@GetMapping("/CadastroPerfil")
-	public String ExibirCadastroPerfil() {
-		return"CadastroPerfil";
-	}
-	
-	//Realiza a chamada do metódo service que faz a persistência no BD
-	@PostMapping("/SalvaCliente")
-	public String SalvaCliente(Cliente cliente, Endereco endereco) {
-		cliente.setEndereco(endereco);
-		this.usuarioService.SalvaCliente(cliente);
-		System.out.println(cliente);
-		return"redirect:/";
-	}
-
+	//Exibi a tela de usuário logado
 	@GetMapping("/admin/HomePageCliente")
-	public String exibiHomePageCliente() {
+	public String exibirHomePageCliente() {
 		return"HomePageCliente";
 	}
-
+	
 	//Exibi tela de recuperação de senha
 	@GetMapping("/RecuperarSenha")
 	public String ExibirFormRecuperacaoSenha() {

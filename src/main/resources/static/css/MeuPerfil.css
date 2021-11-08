@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', 'sans-serif';
+}
+
+.GroupButton a {
+    color: #FFFF
+}
+
+main {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.ProfileContainer{
+    width: 600px;
+    height: 300px;
+
+    padding: 8px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    position: relative;
+    top: 210px;
+
+    background-color: blueviolet;
+}
+
+.ControlGroup {
+    width: 100%;
+    padding: 4px;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.ControlGroup, .GroupButton {
+    border: 1px solid black;
+}

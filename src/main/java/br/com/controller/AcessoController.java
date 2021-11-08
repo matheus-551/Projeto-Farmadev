@@ -9,13 +9,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.model.Acesso;
+import br.com.model.Cliente;
 import br.com.service.AcessoService;
+import br.com.service.ClienteService;
 
 @Controller
 public class AcessoController {
 	
 	@Autowired
 	private AcessoService acessoService;
+	
+	@Autowired	
+	private ClienteService clienteService;
 	
 	//Exibi a tela de login do usuário
 	@GetMapping("/login")
@@ -55,7 +60,8 @@ public class AcessoController {
 		acesso = this.acessoService.BuscaAcesso(acesso.getLogin(), acesso.getSenha());
 		
 		if(acesso != null) {
-			session.setAttribute("SessionAcesso", acesso);
+			Cliente cliente = this.clienteService.BuscaClienteAcesso(acesso);
+			session.setAttribute("ClienteLogado", cliente);
 			return"redirect:/admin/HomePageCliente";
 		}else {
 			ra.addFlashAttribute("MensagemFlash", "Usuário ou senha inválidos");
@@ -74,5 +80,14 @@ public class AcessoController {
 	@GetMapping("/AcessoNegado")
 	public String AcessoNegado() {
 		return "redirect:/";
+	}
+	
+	/*Recebe o Id do objeto Acesso que está relacionado 
+	 * com o cliente e desativa o acesso 
+	 */
+	@GetMapping("/DesabilitarAcessoCliente")
+	public String DesabilitaAcessoCliente(Integer id) {
+		this.acessoService.desabilitar(id);
+		return"redirect:/sair";
 	}
 }

@@ -24,8 +24,6 @@ public class Cliente {
 	private String email;
 	@DateTimeFormat(pattern= "yyyy-MM-dd")
 	private LocalDate DataNascimento;
-	@Column(nullable = false)
-	private boolean status;
 	private Endereco endereco;
 	@OneToOne
 	private Acesso acesso;
@@ -74,14 +72,6 @@ public class Cliente {
 		DataNascimento = dataNascimento;
 	}
 
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -101,7 +91,7 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", NomeCompleto=" + NomeCompleto + ", cpf=" + cpf + ", email=" + email
-				+ ", DataNascimento=" + DataNascimento + ", status=" + status + ", endereco=" + endereco + ", acesso="
+				+ ", DataNascimento=" + DataNascimento + ", endereco=" + endereco + ", acesso="
 				+ acesso + "]";
 	}
 }
