@@ -15,7 +15,7 @@
         </div>
         <div class="NavBar">
             <div class="NavGroup">
-                <a href="/admin/HomePageCliente">Voltar</a>
+                <a href="/Client/HomePageCliente">Voltar</a>
             </div>
         </div>
     </header>
@@ -60,8 +60,8 @@
                 </span>
             </div>
             <div class="GroupButton">
-                <a th:href="|/admin/AlterarDadosCliente?id=${session.ClienteLogado.id}|">Alterar dados</a> ||
-                <a th:href="|/DesabilitarAcessoCliente?id=${session.ClienteLogado.acesso.id}|">Desativar perfil</a>
+                <a th:href="|/Client/AlterarDadosCliente?id=${session.ClienteLogado.id}|">Alterar dados</a> ||
+                <a th:href="|/DesabilitarAcesso?id=${session.ClienteLogado.acesso.id}|">Desativar perfil</a>
             </div>
         </div>
     </main>

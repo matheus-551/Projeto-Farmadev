@@ -10,21 +10,12 @@
 <body>
 	<main>
 		<h1>Login</h1>
-		<div class="social-media">
-			<a href="#"> <img src="../img/google.png" alt="Google"></a>
-			<a href="#"> <img src="../img/facebook.png" alt="Facebook"></a> 
-			<a href="#"> <img src="../img/linkedin.png" alt="Linkedin"></a>
-		</div>
-
-		<div class="alternative">
-			<span>OU</span>
-		</div>
 
 		<div class="MsgFlash">
 			<span th:text="${MensagemFlash}" th:if="${MensagemFlash != null}"></span>
 		</div>
 	
-		<form action="/EfetuaLogin" method="post">
+		<form action="/EfetuaLoginCliente" method="post">
 			<label for="login">Login</label> 
 			<input type="text" id="login" name="login">
 
@@ -34,8 +25,10 @@
 			<input type="submit" value="Entrar" id="button">
 		</form>
 
-		<a class="link" href="/CadastroAcesso">Cadastra-se</a> 
+		<a class="link" href="/CadastroAcessoCliente">Cadastra-se</a> 
 		<a class="link" href="/RecuperarSenha">Esqueceu a senha ?</a>
+		
+		<a class="link" href="/loginFuncionario">Sou funcionario</a>
 	</main>
 
 	<section class="images">

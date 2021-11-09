@@ -19,9 +19,9 @@ public class ClienteController {
 	private ClienteService clienteService;
 	
 	//Exibi a tela de Cadastro de perfil do Clinete
-	@GetMapping("/CadastroPerfil")
+	@GetMapping("/CadastroPerfilCliente")
 	public String ExibirCadastroPerfil(Model model) {
-		return"CadastroPerfil";
+		return"Cliente/CadastroPerfilCliente";
 	}
 	
 	//Realiza a chamada do metódo service que faz a persistência no BD
@@ -33,17 +33,17 @@ public class ClienteController {
 	}
 	
 	//Exibi a tela de Perfil
-	@GetMapping("/admin/MeuPerfil")
-	public String ExibirPerfil() {
-		return"MeuPerfil";
+	@GetMapping("/Client/MeuPerfil")
+	public String ExibirPerfilCliente() {
+		return"Cliente/MeuPerfilCliente";
 	}
 	
 	//Exibi a tela de alteração de dados
-	@GetMapping("/admin/AlterarDadosCliente")
-	public String AlteraDadosPerfil(Integer id, Model model) {
+	@GetMapping("/Client/AlterarDadosCliente")
+	public String AlteraDadosPerfilCliente(Integer id, Model model) {
 		Cliente cliente = this.clienteService.BuscaPorId(id);
 		model.addAttribute("cliente", cliente);
-		return"AlterarDadosCliente";
+		return"Cliente/AlterarDadosCliente";
 	}
 	
 	//Realiza o Update do cliente 
@@ -53,6 +53,6 @@ public class ClienteController {
 		this.clienteService.SalvaCliente(cliente);
 		
 		session.setAttribute("ClienteLogado", cliente);
-		return"redirect:/admin/MeuPerfil";
+		return"redirect:/Client/MeuPerfil";
 	}
 }

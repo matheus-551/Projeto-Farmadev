@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Famadev</title>
+    <link rel="stylesheet" type="text/css" href="../css/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="../css/MeuPerfil.css">
+</head>
+<body>
+    <header>
+        <div class="ContainerLogo">
+            <img class="logo" src="../img/LogotipoFarmadev1.5.png" alt="Logo da Farmadev">
+        </div>
+        <div class="NavBar">
+            <div class="NavGroup">
+                <a href="/Admin/HomePageFuncionario">Voltar</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="ProfileContainer">
+            <h2 th:text="${session.FuncionarioLogado.NomeCompleto}"></h2>
+
+            <div class="ControlGroup">
+                <span>
+                    <h4>CPF: </h4>
+                    <span th:text="${session.FuncionarioLogado.cpf}"></span>
+                </span>
+                <span>
+                    <h4>Identificação de Contrato</h4>
+                	<span th:text="${session.FuncionarioLogado.IdentificacaoContrato}"></span>
+                </span>
+  
+            </div>
+            <div class="ControlGroup">
+                <span>
+                    <h4>CEP :</h4>
+                    <span th:text="${session.FuncionarioLogado.endereco.cep}"></span>
+                </span>
+                <span>
+                    <h4>Rua :</h4>
+                    <span th:text="${session.FuncionarioLogado.endereco.rua}"></span>
+                </span>
+                <span>
+                    <h4>Bairro :</h4>
+                    <span th:text="${session.FuncionarioLogado.endereco.bairro}"></span>
+                </span>
+                <span>
+                    <h4>Número :</h4>
+                   	<span th:text="${session.FuncionarioLogado.endereco.numero}"></span>
+                </span>
+                <span>
+                    <h4>Complemento :</h4>
+                    <span th:text="${session.FuncionarioLogado.endereco.complemento}"></span>
+                </span>
+            </div>
+            <div class="GroupButton">
+                <a th:href="|/Admin/AlteraDados?id=${session.FuncionarioLogado.id}|">Alterar dados</a> ||
+                <a th:href="|/DesabilitarAcesso?id=${session.FuncionarioLogado.acesso.id}|">Desativar perfil</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

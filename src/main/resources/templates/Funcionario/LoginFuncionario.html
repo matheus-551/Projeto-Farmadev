@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Farmadev</title>
+	<link rel="stylesheet" type="text/css" href="../css/form.css">
+</head>
+<body>
+	<main>
+		<h1>Acesso do funcionário</h1>
+
+		<div class="MsgFlash">
+			<span th:text="${MensagemFlash}" th:if="${MensagemFlash != null}"></span>
+		</div>
+	
+		<form action="/EfetuaLoginFuncionario" method="post">
+			<label for="login">Login</label> 
+			<input type="text" id="login" name="login">
+
+			<label for="senha">Senha</label> 
+			<input type="password" id="senha" name="senha"> 
+				
+			<input type="submit" value="Entrar" id="button">
+		</form>
+
+		<a class="link" href="/CadastroAcessoFuncionario">Cadastrar funcionário</a> 
+		
+	</main>
+
+	<section class="images">
+		<img src="../img/LogotipoFarmadev1.5.png" />
+	</section>
+</body>
+</html>

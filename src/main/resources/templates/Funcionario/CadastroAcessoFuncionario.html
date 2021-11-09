@@ -9,20 +9,12 @@
 </head>
 <body>
 	<main>
-		<h1>Criar Conta</h1>
-		<div class="social-media">
-			<a href="#"> <img src="../img/google.png" alt="Google"></a>
-			<a href="#"> <img src="../img/facebook.png" alt="Facebook"></a> 
-			<a href="#"> <img src="../img/linkedin.png" alt="Linkedin"></a>
-		</div>
-
-		<div class="alternative">
-			<span>OU</span>
-		</div>
+		<h1>Criar conta do funcionário</h1>
 
 		<form action="/SalvaFormAcesso" method="post">
+			
 			<input type="hidden" name="status" value="true"/>
-			<input type="hidden" id="TipoPerfil" name="TipoPerfil" value="01">
+			<input type="hidden" id="TipoPerfil" name="TipoPerfil" value="02">
 		
 			<label for="login">Login</label> 
 			<input type="text" id="login" name="login">
@@ -33,7 +25,7 @@
 			<input type="submit" value="Próximo" id="button">
 		</form>
 
-		<a class="link" href="/login">Já tenho uma conta</a> 
+		<a class="link" href="/loginFuncionario">Já tenho uma conta</a> 
 	</main>
 
 	<section class="images">

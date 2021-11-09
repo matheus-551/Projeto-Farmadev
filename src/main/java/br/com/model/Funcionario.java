@@ -18,7 +18,6 @@ public class Funcionario {
 	private String cpf;
 	@Column(unique = true, nullable = false)
 	private String IdentificacaoContrato;
-	private boolean status;
 	private Endereco endereco;
 	@OneToOne
 	private Acesso acesso;
@@ -58,15 +57,7 @@ public class Funcionario {
 	public void setIdentificacaoContrato(String identificacaoContrato) {
 		IdentificacaoContrato = identificacaoContrato;
 	}
-
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
+	
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -86,6 +77,6 @@ public class Funcionario {
 	@Override
 	public String toString() {
 		return "Funcionario [id=" + id + ", NomeCompleto=" + NomeCompleto + ", cpf=" + cpf + ", IdentificacaoContrato="
-				+ IdentificacaoContrato + ", status=" + status + ", endereco=" + endereco + ", acesso=" + acesso + "]";
+				+ IdentificacaoContrato + ", endereco=" + endereco + ", acesso=" + acesso + "]";
 	}
 }

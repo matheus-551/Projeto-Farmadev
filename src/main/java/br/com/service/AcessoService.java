@@ -27,10 +27,9 @@ public class AcessoService {
 		if(acesso.getLogin().equalsIgnoreCase(login) && acesso.getSenha().equals(senha)) {
 			// retorna o obj acesso existente no banco de dados
 			return acesso;
-		}else if(acesso == null || acesso.getStatus() == false) {
-			return null;
+		}else if(acesso.getStatus() == false) {
+			return acesso;
 		}else {
-			//Retorna null caso o objeto não exista na base de dados
 			return null;
 		}
 	}

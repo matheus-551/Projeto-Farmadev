@@ -6,15 +6,19 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import br.com.controller.AutorizadorInterceptor;
+import br.com.controller.ClienteInterceptor;
+import br.com.controller.FuncionarioInterceptor;
 
 @Configuration
 public class AcessoConfig implements WebMvcConfigurer {
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor((HandlerInterceptor) new AutorizadorInterceptor())
-			.addPathPatterns(new String[] {"/admin", "/admin/**"}).excludePathPatterns("/css/**", "/icons/**", "/js/**");
+		registry.addInterceptor((HandlerInterceptor) new ClienteInterceptor())
+			.addPathPatterns(new String[] {"/Client", "/Client/**"}).excludePathPatterns("/css/**", "/icons/**", "/js/**");
+		
+		registry.addInterceptor((HandlerInterceptor) new FuncionarioInterceptor())
+			.addPathPatterns(new String[] {"/Admin", "/Admin/**"}).excludePathPatterns("/css/**", "/icons/**", "/js/**");
 	}
 	
 	  @Override

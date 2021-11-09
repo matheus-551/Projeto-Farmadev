@@ -18,7 +18,7 @@ public class Cliente {
 	private Integer id;
 	@Column(nullable = false)
 	private String NomeCompleto;
-	@Column(unique = true, nullable = false)
+	@Column(unique = true, nullable = false, length = 11)
 	private String cpf;
 	@Column(nullable = false)
 	private String email;

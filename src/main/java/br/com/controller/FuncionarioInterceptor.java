@@ -6,13 +6,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
+public class FuncionarioInterceptor extends HandlerInterceptorAdapter {
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 	        throws Exception {
 		
-		if (request.getSession().getAttribute("ClienteLogado") == null) {
+		if (request.getSession().getAttribute("FuncionarioLogado") == null) {
 			request.getRequestDispatcher("/AcessoNegado").forward(request, response);
 			return false;
 		} else {
