@@ -27,6 +27,8 @@ public class Produto {
 	private String lote;
 	private boolean status;
 	@ManyToOne
+	private Categoria categoria;
+	@ManyToOne
 	private Fornecedor fornecedor;
 	
 	public Produto() {
@@ -104,6 +106,14 @@ public class Produto {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 
 	public Fornecedor getFornecedor() {
 		return fornecedor;
@@ -117,6 +127,6 @@ public class Produto {
 	public String toString() {
 		return "Produto [id=" + id + ", NomeProduto=" + NomeProduto + ", descricao=" + descricao + ", TipoMedicamento="
 				+ TipoMedicamento + ", TipoTarja=" + TipoTarja + ", preco=" + preco + ", estoque=" + estoque + ", lote="
-				+ lote + ", status=" + status + ", fornecedor=" + fornecedor + "]";
+				+ lote + ", status=" + status + ", categoria=" + categoria + ", fornecedor=" + fornecedor + "]";
 	}
 }

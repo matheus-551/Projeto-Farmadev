@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>Farmadev</title>
+</head>
+<body>
+	<header>
+		<h1>Categoria</h1>
+	</header>
+	<main>
+		<form action="/SalvaCategoria" method="post" th:object="${CategoriaObj}">
+			
+			<input type="hidden" th:field="*{id}">
+			
+			<label for="NomeCategoria">Mome da Categoria</label>
+			<input type="text" th:field="*{NomeCategoria}"/>
+			
+			<input type="submit" value="Salvar"> 
+		</form>
+	</main>
+</body>
+</html>

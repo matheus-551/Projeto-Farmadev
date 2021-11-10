@@ -31,8 +31,9 @@ main {
 
     position: relative;
     top: 210px;
-
-    background-color: blueviolet;
+	
+	box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.486);
+    background-color: #f2f2f2;
 }
 
 .ControlGroup {
@@ -44,6 +45,7 @@ main {
 }
 
 
-.ControlGroup, .GroupButton {
-    border: 1px solid black;
+.GroupButton a{
+	text-decoration: none;
+	color: #000000;   
 }

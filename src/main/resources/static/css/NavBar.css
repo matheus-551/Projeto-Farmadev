@@ -48,7 +48,11 @@ header {
 }
 
 .NavGroup a {
-    padding: 2px;
+	padding: 8px;
+	
+	text-decoration: none;
+	
+	color: #000000;
 }
 
 /*ESTILIZA플O DA BARRA DE BUSCA*/
@@ -118,7 +122,7 @@ MENU SUSPENSO*/
 /*DEFINI A POSI플O DO ELEMENTO COMO RELATIVE E O DISPLAY COMO INLINE-BLOCK*/
 .dropdown {
     position: relative;
-    display: inline-block;
+   	display: inline-block;
 }
 /*DEFINE O COMPRIMENTO MINIMO PARA O ELEMENTO DA CLASSE ESPECIFICADA*/
 /*DEFINE QUE O DISPLAY SER� "NONE" E DE POSI플O ABSOLUTA. ISSO FAR� COM QUE

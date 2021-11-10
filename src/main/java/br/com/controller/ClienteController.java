@@ -26,7 +26,7 @@ public class ClienteController {
 	
 	//Realiza a chamada do metódo service que faz a persistência no BD
 	@PostMapping("/SalvaCliente")
-	public String SalvaCliente(Cliente cliente, Endereco endereco) {
+	public String SalvarCliente(Cliente cliente, Endereco endereco) {
 		cliente.setEndereco(endereco);
 		this.clienteService.SalvaCliente(cliente);
 		return"redirect:/";

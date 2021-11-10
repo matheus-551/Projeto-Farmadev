@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="ww.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Famadev</title>
     <link rel="stylesheet" type="text/css" href="../css/Navbar.css">
-    <link rel="stylesheet" type="text/css" href="../css/HomePageCliente.css">
+    <link rel="stylesheet" type="text/css" href="../css/Funcionario.css">
 </head>
 <body>
     <header>
@@ -14,10 +14,11 @@
             <img class="logo" src="../img/LogotipoFarmadev1.5.png" alt="Logo da Farmadev">
         </div>
         <div class="NavBar">
-            <form  class="FormBusca" action="" method="#">
-                <input type="search" name="pesquisa" placeholder="pesquisar...">
-                <input type="submit" value="Buscar">
-            </form>
+        	<div class="NavGroup">
+        		<a class="active" href="Categorias">Categorias</a>
+        		<a href="#">Produtos</a>
+        		<a href="#">Fornecedor</a>
+        	</div>
             <div class="NavGroup">
                 <div class="dropdown">
                     <button class="DropBtn"><img src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/40/000000/external-user-interface-kiranshastry-lineal-kiranshastry.png"/></button>
@@ -30,7 +31,20 @@
         </div>
     </header>
     <main>
- 		<h1>Funcionário Logado com SUCESSO</h1>
+    	<div class="MainCabecalho">
+    		<h1>Categorias</h1>
+ 			<a class="addButtons" href="/Admin/CadastroCategoria">Nova Categoria</a>
+ 		</div>
+ 		
+ 		<div class="ContainerCards">
+ 			<div class="Card" th:each="ListCategoria : ${ListaCategorias}">
+ 				<h3 th:text="${ListCategoria.NomeCategoria}"></h3>
+ 				<div class="ButtonGroup">
+ 					<a th:href="|/AlteraCategoria?id=${ListCategoria.id}">Editar</a>
+ 					<a th:href="|/DeletaCategoria?id=${ListCategoria.id}">Deletar</a>
+ 				</div>
+ 			</div>
+ 		</div>
     </main>
 </body>
 </html>
