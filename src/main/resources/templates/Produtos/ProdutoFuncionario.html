@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="ww.thymeleaf.org">
+<html lang="pt-br" xmlns:th="www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Famadev</title>
-    <link rel="stylesheet" type="text/css" href="../css/Navbar.css">
+	<meta charset="utf-8">
+	<title>Farmadev</title>
+	<link rel="stylesheet" type="text/css" href="../css/Navbar.css">
     <link rel="stylesheet" type="text/css" href="../css/Funcionario.css">
 </head>
 <body>
-    <header>
+	<header>
         <div class="ContainerLogo">
             <img class="logo" src="../img/LogotipoFarmadev1.5.png" alt="Logo da Farmadev">
         </div>
@@ -32,16 +32,16 @@
     </header>
     <main>
     	<div class="MainCabecalho">
-    		<h1>Categorias</h1>
- 			<a class="addButtons" href="/Admin/CadastroCategoria">Nova Categoria</a>
+    		<h1>Produto</h1>
+ 			<a class="addButtons" href="/Admin/CadastroProduto">Novo produto</a>
  		</div>
  		
  		<div class="ContainerCards">
- 			<div class="Card" th:each="ListCategoria : ${ListaCategorias}">
- 				<h3 th:text="${ListCategoria.NomeCategoria}"></h3>
+ 			<div class="Card">
+ 				<h3></h3>
  				<div class="ButtonGroup">
- 					<a th:href="|/AlteraCategoria?id=${ListCategoria.id}">Editar</a>
- 					<a th:href="|/DeletaCategoria?id=${ListCategoria.id}">Deletar</a>
+ 					<a href="#">Editar</a>
+ 					<a href="#">Deletar</a>
  				</div>
  			</div>
  		</div>

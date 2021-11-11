@@ -2,6 +2,8 @@ package br.com.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,8 +18,8 @@ public class Produto {
 	private String NomeProduto;
 	@Column(nullable = false, length = 6000)
 	private String descricao;
-	@Column(nullable = false)
-	private String TipoMedicamento;
+	@Enumerated(EnumType.STRING)
+	private TipoMedicamento tipoMedicamento;
 	@Column(nullable = false)
 	private String TipoTarja;
 	@Column(nullable = false)
@@ -25,6 +27,7 @@ public class Produto {
 	@Column(nullable = false)
 	private Integer estoque;
 	private String lote;
+	@Column(nullable = false)
 	private boolean status;
 	@ManyToOne
 	private Categoria categoria;
@@ -59,12 +62,12 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public String getTipoMedicamento() {
-		return TipoMedicamento;
+	public TipoMedicamento getTipoMedicamento() {
+		return tipoMedicamento;
 	}
 
-	public void setTipoMedicamento(String tipoMedicamento) {
-		TipoMedicamento = tipoMedicamento;
+	public void setTipoMedicamento(TipoMedicamento tipoMedicamento) {
+		this.tipoMedicamento = tipoMedicamento;
 	}
 
 	public String getTipoTarja() {
@@ -126,7 +129,7 @@ public class Produto {
 	@Override
 	public String toString() {
 		return "Produto [id=" + id + ", NomeProduto=" + NomeProduto + ", descricao=" + descricao + ", TipoMedicamento="
-				+ TipoMedicamento + ", TipoTarja=" + TipoTarja + ", preco=" + preco + ", estoque=" + estoque + ", lote="
+				+ tipoMedicamento + ", TipoTarja=" + TipoTarja + ", preco=" + preco + ", estoque=" + estoque + ", lote="
 				+ lote + ", status=" + status + ", categoria=" + categoria + ", fornecedor=" + fornecedor + "]";
 	}
 }

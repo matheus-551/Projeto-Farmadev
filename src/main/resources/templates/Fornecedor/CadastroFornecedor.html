@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>Farmadev</title>
+</head>
+<body>
+	<h1>Fornecedor</h1>
+	
+	<form action="/SalvaFornecedor" method="post" th:object="${FornecedorObj}">
+		
+		<input type="hidden" th:field="*{id}">
+		
+		<label for="NomeFornecedor">Nome do fornecedor: </label>
+		<input type="text" th:field="*{NomeFornecedor}" required>
+		
+		<label for="cnpj">Cnpj: </label>
+		<input type="text" th:field="*{cnpj}" required>
+		
+		<input type="submit" value="Salvar">	
+	</form>
+</body>
+</html>
