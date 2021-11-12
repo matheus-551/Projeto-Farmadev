@@ -23,12 +23,8 @@ public class AcessoService {
 		//Verifica se os parâmetros passados existem no banco de dados
 		Acesso acesso = this.acessoRepository.findByLoginAndSenha(login, senha);
 		
-		
-		if(acesso.getLogin().equalsIgnoreCase(login) && acesso.getSenha().equals(senha)) {
-			// retorna o obj acesso existente no banco de dados
-			return acesso;
-		}else if(acesso.getStatus() == false) {
-			return acesso;
+		if(acesso != null) {
+			return acesso; 
 		}else {
 			return null;
 		}

@@ -24,7 +24,7 @@ public class ClienteService {
 		Cliente cliente = this.clienteRepository.findByAcesso(acesso);
 		return cliente;
 	}
-	
+
 	//Realiza a persistencia do objeto "cliente" mo BD
 	public void SalvaCliente(Cliente cliente) {
 		this.clienteRepository.save(cliente);

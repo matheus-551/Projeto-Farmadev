@@ -79,11 +79,11 @@ public class AcessoController {
 	
 	//Realiza o login do usuário cliente
 	@PostMapping("/EfetuaLoginCliente")
-	public String RealizaLoginCliente(Acesso acesso, RedirectAttributes ra, HttpSession session) {
+	public String RealizaLoginCliente(String login,String senha , RedirectAttributes ra, HttpSession session) {
 			
-		acesso = this.acessoService.BuscaAcesso(acesso.getLogin(), acesso.getSenha());
+		Acesso acesso = this.acessoService.BuscaAcesso(login, senha);
 		
-		if(acesso != null && acesso.getTipoPerfil() == 01 && acesso.getStatus() != false) {
+		if(acesso != null && acesso.getLogin().equalsIgnoreCase(login) && acesso.getSenha().equals(senha) && acesso.getTipoPerfil() == 01 && acesso.getStatus() != false) {
 			Cliente cliente = this.clienteService.BuscaClienteAcesso(acesso);
 			session.setAttribute("ClienteLogado", cliente);
 			
@@ -98,11 +98,11 @@ public class AcessoController {
 	}
 	
 	@PostMapping("/EfetuaLoginFuncionario")
-	public String RealizaLoginFuncionario(Acesso acesso, RedirectAttributes ra, HttpSession session) {
+	public String RealizaLoginFuncionario(String login, String senha, RedirectAttributes ra, HttpSession session) {
 		
-		acesso = this.acessoService.BuscaAcesso(acesso.getLogin(), acesso.getSenha());
+		Acesso acesso = this.acessoService.BuscaAcesso(login, senha); 
 		
-		if(acesso != null && acesso.getTipoPerfil() == 02 && acesso.getStatus() != false) {
+		if(acesso != null && acesso.getLogin().equalsIgnoreCase(login) && acesso.getSenha().equals(senha) && acesso.getTipoPerfil() == 02 && acesso.getStatus() != false) {
 			Funcionario funcionario = this.funcionarioService.BuscaFuncionarioAcesso(acesso);
 			session.setAttribute("FuncionarioLogado", funcionario);
 			
