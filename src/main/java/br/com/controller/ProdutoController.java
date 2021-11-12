@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.model.Produto;
 import br.com.model.TipoMedicamento;
@@ -34,13 +33,16 @@ public class ProdutoController {
 	
 	//Exibi a tela de produto para o funcionario
 	@GetMapping("/Admin/ProdutoFuncionario")
-	public String ExibirProdutoFuncionario() {
+	public String ExibirProdutoFuncionario(Model model) {
+		model.addAttribute("ListaProduto", this.produtoService.ListaProdutos());
 		return"Produtos/ProdutoFuncionario";
 	}
 	
 	//Exibi o form de cadastro de produto
 	@GetMapping("/Admin/CadastroProduto")
 	public String ExbirCadastroProduto(Model model) {
+		Produto produto = new Produto();
+		model.addAttribute("ProdutoObj", produto);
 		model.addAttribute("ListFornecedor", this.fornecedorService.ListaFornecedores());
 		model.addAttribute("ListCategorias", this.categoriaService.ListaCategorias());
 		return"Produtos/CadastroProduto";
@@ -51,5 +53,13 @@ public class ProdutoController {
 	public String SalvarProduto(Produto produto) {
 		this.produtoService.SalvaProduto(produto);
 		return"redirect:/Admin/ProdutoFuncionario";
+	}
+	
+	//Altera o produto
+	@GetMapping("/AlteraProduto")
+	public String AlteraPrduto(Integer id, Model model) {
+		Produto produto = this.produtoService.BuscaPorId(id);
+		model.addAttribute("ProdutoObj", produto);
+		return"Produtos/CadastroProduto";
 	}
 }

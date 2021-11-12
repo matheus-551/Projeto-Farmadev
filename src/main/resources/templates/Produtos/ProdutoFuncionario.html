@@ -37,11 +37,16 @@
  		</div>
  		
  		<div class="ContainerCards">
- 			<div class="Card">
- 				<h3></h3>
- 				<div class="ButtonGroup">
- 					<a href="#">Editar</a>
- 					<a href="#">Deletar</a>
+ 			<div class="Card" th:each="ListProduto : ${ListaProduto}">
+ 				<h3 th:text="${ListProduto.NomeProduto}"></h3>
+ 				
+ 				<div class="FooterCard">
+	 				<span th:text="${#numbers.formatCurrency(ListProduto.Preco)}"></span>
+	 				
+	 				<div class="ButtonGroup">
+	 					<a th:href="|/AlteraProduto?id=${ListProduto.id}|">Editar</a>
+	 					<a href="#">Deletar</a>
+	 				</div>
  				</div>
  			</div>
  		</div>

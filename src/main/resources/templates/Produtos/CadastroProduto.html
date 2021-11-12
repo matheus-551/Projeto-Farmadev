@@ -8,45 +8,46 @@
 	
 	<h1>Produtos</h1>
 
-	<form action="/SalvaProduto" method="post">
+	<form action="/SalvaProduto" method="post" th:object="${ProdutoObj}">
 	
-		<input type="hidden" name="status" value="true">
+		<input type="hidden" th:field="*{id}">
+		<input type="hidden" th:field="*{status}" value="true">
 	
 		<label for="NomeProduto">Nome do Medicamento: </label>
-		<input type="text" name="NomeProduto" required>
+		<input type="text" th:field="*{NomeProduto}" required>
 		
 		<label for="tipoMedicamento">Tipo do medicamento: </label>
-		<select name="tipoMedicamento">
+		<select th:field="*{tipoMedicamento}">
 			<option value=""></option>
 			<option th:each="TM : ${ListaTipoMedicamento}" th:text="${TM}" th:value="${TM}">
 		</select>
 		
 		<label for="TipoTarja">Tipo da tarja: </label>
-		<input type="text" name="TipoTarja" required>
+		<input type="text" th:field="*{TipoTarja}" required>
 		
 		<label for="preco">Preço: </label>
-		<input type="text" name="preco">
+		<input type="text" th:field="*{preco}">
 		
 		<label for="estoque">Estoque: </label>
-		<input type="number" name="estoque" min="0" max="999">
+		<input type="number" th:field="*{estoque}" min="0" max="999">
 		
 		<label for="lote">Lote: </label>
-		<input type="text" name="lote" required>
+		<input type="text" th:field="*{lote}" required>
 		
 		<label for="categoria">Categoria :</label>
-		<select name="categoria">
+		<select th:field="*{categoria}">
 			<option value=""></option>
 			<option th:each="ListaCategoria : ${ListCategorias}" th:text="${ListaCategoria.NomeCategoria}" th:value="${ListaCategoria.id}"></option>
 		</select>
 		
 		<label for="fornecedor">Fornecedor: </label>
-		<select name="fornecedor">
+		<select th:field="*{fornecedor}">
 			<option value=""></option>
 			<option th:each="ListaFornecedor : ${ListFornecedor}" th:text="${ListaFornecedor.NomeFornecedor}" th:value="${ListaFornecedor.id}"></option>
 		</select>
 		
 		<label for="descricao">Descrição :</label>
-		<textarea name="descricao" maxLength="3000"></textarea>
+		<textarea th:field="*{descricao}" maxLength="3000"></textarea>
 		
 		<input type="submit" value="Salvar">
 	</form>

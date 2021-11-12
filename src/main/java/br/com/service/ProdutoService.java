@@ -1,5 +1,7 @@
 package br.com.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,17 @@ public class ProdutoService {
 	
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	
+	//Lista dos os produtos do BD
+	public List<Produto>ListaProdutos(){
+		return this.produtoRepository.findAll();
+	}
+	
+	//Busca Produto por id
+	public Produto BuscaPorId(Integer id) {
+		Produto produto = this.produtoRepository.getById(id);
+		return produto;
+	}
 	
 	//Salva o produto no BD
 	public void SalvaProduto(Produto produto) {

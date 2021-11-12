@@ -64,7 +64,13 @@ main {
 	background: #C4C4C4;
 }
 
-.ButtonGroup{
+.FooterCard{
+	width: 100%;
+	padding: 10px;
+	
+	display: flex;
+	justify-content: space-between;
+	
 	align-self: flex-end;
 }
 
