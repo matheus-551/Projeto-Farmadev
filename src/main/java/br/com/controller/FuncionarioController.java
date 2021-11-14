@@ -1,12 +1,15 @@
 package br.com.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.model.Endereco;
 import br.com.model.Funcionario;
@@ -25,10 +28,24 @@ public class FuncionarioController {
 	
 	//Realiza a chamada do metódo do service que faz a persistência no BD
 	@PostMapping("/SalvaFuncionario")
-	public String SalvaFuncionario(Funcionario funcionario, Endereco endereco) {
-		funcionario.setEndereco(endereco);
-		this.funcionarioService.SalvaFuncionario(funcionario);
-		return"redirect:/loginFuncionario";
+	public String SalvaFuncionario(@Valid Funcionario funcionario, BindingResult result, Endereco endereco, HttpSession session, RedirectAttributes ra) {
+		
+		if(result.hasErrors()) {
+			ra.addFlashAttribute("MensagemFlash", result.getAllErrors().get(0).getDefaultMessage());
+			
+			return"redirect:/CadastroPerfilFuncionario";
+		}else if(this.funcionarioService.VerificaCpfExistente(funcionario.getCpf()) == true) {
+			ra.addFlashAttribute("MensagemFlash", "Já existe um usuário cadastrado com esse CPF");
+			
+			return"redirect:/CadastroPerfilFuncionario";
+		}else {
+			funcionario.setEndereco(endereco);
+			this.funcionarioService.SalvaFuncionario(funcionario);
+			
+			session.invalidate();
+			return"redirect:/loginFuncionario";
+		}
+	
 	}
 	
 	//Exibi a tela de Perfil do Funcionario

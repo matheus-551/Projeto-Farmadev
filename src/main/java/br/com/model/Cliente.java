@@ -8,7 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
 
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -16,13 +20,21 @@ public class Cliente {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@Column(nullable = false)
+	@NotBlank(message = "Informe um nome valido")
 	private String NomeCompleto;
+	
 	@Column(unique = true, nullable = false, length = 11)
+	@CPF(message = "CPF inválido")
 	private String cpf;
+	
 	@Column(nullable = false)
+	@Email(message = "Email inválido")
 	private String email;
+	
 	@DateTimeFormat(pattern= "yyyy-MM-dd")
+	@Past(message = "Informe uma data de nascimento valida")
 	private LocalDate DataNascimento;
 	private Endereco endereco;
 	@OneToOne

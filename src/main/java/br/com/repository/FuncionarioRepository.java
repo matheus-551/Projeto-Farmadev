@@ -9,4 +9,12 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Intege
 	
 	//SELECT * FROM FUNCIONARIO WHERE ACESSO_ID = ?
 	public Funcionario findByAcesso (Acesso acesso);
+	
+	/*
+	//SELECT IdentificacaoContrato FROM FUNCIONARIO WHERE IdentificacaoContrato = ?
+	public boolean existsByIdentificacaoContrato(String IdentificacaoContrato);
+	*/
+	
+	//SELECT CPF FROM FUNCIONARIO WHERE CPF = ?
+	public boolean existsByCpf(String cpf);
 }

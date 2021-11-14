@@ -1,9 +1,11 @@
 package br.com.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -51,32 +53,47 @@ public class AcessoController {
 		return"Funcionario/CadastroAcessoFuncionario";
 	}
 	
-	//Metódo que recebe as informações do form de cadastro de acesso
-	@PostMapping("/SalvaFormAcesso")
-	public String SalvaFormAcesso(Acesso acesso, RedirectAttributes ra) {
-	
-		if(acesso.getTipoPerfil() == 1) {
+	//Recebe as informações do form de acesso cliente
+	@PostMapping("/SalvaClienteAcesso")
+	public String SalvarAcessoCliente(@Valid Acesso acesso, BindingResult result, HttpSession session,RedirectAttributes ra) {
+		
+		//Retona os erros encotrados pelo bean Validation
+		if(result.hasErrors()) {
+			ra.addFlashAttribute("MensagemFlash", result.getAllErrors().get(0).getDefaultMessage());
+			return"redirect:/CadastroAcessoCliente";
+		}else if(this.acessoService.VerificaLoginExitente(acesso.getLogin()) == true && acesso.getTipoPerfil() == 1) {
+			ra.addFlashAttribute("MensagemFlash","Login já existente");
+			return"redirect:/CadastroAcessoCliente";
+		}else{
 			//Chama o metódo do service que realiza a persistencia
 			this.acessoService.SalvaAcesso(acesso);
 			
 			//Envia o obj de acesso para a próxima pagina
-			ra.addFlashAttribute("AcessoObjct", acesso);
+			session.setAttribute("AcessoObjct", acesso);
 			
 			return"redirect:/CadastroPerfilCliente";
-		}else{
-			this.acessoService.SalvaAcesso(acesso);
-			
-			ra.addFlashAttribute("AcessoObjct", acesso);
-			
-			return"redirect:/CadastroPerfilFuncionario";
 		}
 	}
 	
-	/*
-	 * ADICIONAR O HTTPSESSION NO METÓDO DE LOGIN, PARA ARMAZENAR 
-	 * O USUÁRIO NA SESSÃO
-	 * */
-	
+	//Recebe as informações do form de acesso funcionario
+	@PostMapping("/SalvaAcessoFuncionario")
+	public String SalvarAcessoFuncionario(@Valid Acesso acesso, BindingResult result, HttpSession session, RedirectAttributes ra) {
+		
+		if(result.hasErrors()) {
+			ra.addFlashAttribute("MensagemFlash", result.getAllErrors().get(0).getDefaultMessage());
+			return"redirect:/CadastroAcessoFuncionario";
+		}else if(this.acessoService.VerificaLoginExitente(acesso.getLogin()) == true && acesso.getTipoPerfil() == 02) {
+			ra.addFlashAttribute("MensagemFlash","Login já existente");
+			return"redirect:/CadastroAcessoFuncionario";
+		}else {
+			this.acessoService.SalvaAcesso(acesso);
+			
+			session.setAttribute("AcessoObjct", acesso);
+			
+			return"redirect:/CadastroPerfilFuncionario";
+		}		
+	}
+		
 	//Realiza o login do usuário cliente
 	@PostMapping("/EfetuaLoginCliente")
 	public String RealizaLoginCliente(String login,String senha , RedirectAttributes ra, HttpSession session) {
@@ -97,6 +114,7 @@ public class AcessoController {
 		return"redirect:/loginCliente";
 	}
 	
+	//Efetua login do funcionário
 	@PostMapping("/EfetuaLoginFuncionario")
 	public String RealizaLoginFuncionario(String login, String senha, RedirectAttributes ra, HttpSession session) {
 		
@@ -129,9 +147,7 @@ public class AcessoController {
 		return "redirect:/";
 	}
 	
-	/*Recebe o Id do objeto Acesso que está relacionado 
-	 * com o cliente e desativa o acesso 
-	 */
+	//Desabilita acesso
 	@GetMapping("/DesabilitarAcesso")
 	public String DesabilitaAcesso(Integer id) {
 		this.acessoService.desabilitar(id);

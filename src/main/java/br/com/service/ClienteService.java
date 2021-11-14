@@ -19,6 +19,14 @@ public class ClienteService {
 		return cliente;
 	}
 	
+	public boolean VerificaCpfExistente(String cpf) {
+		return this.clienteRepository.existsByCpf(cpf);
+	}
+	
+	public boolean VerificaEmailExistente(String email) {
+		return this.clienteRepository.existsByEmail(email);
+	}
+	
 	//Busca um cliente pelo acesso_id
 	public Cliente BuscaClienteAcesso(Acesso acesso) {
 		Cliente cliente = this.clienteRepository.findByAcesso(acesso);

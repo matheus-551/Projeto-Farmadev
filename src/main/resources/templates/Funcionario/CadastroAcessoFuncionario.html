@@ -11,7 +11,11 @@
 	<main>
 		<h1>Criar conta do funcionário</h1>
 
-		<form action="/SalvaFormAcesso" method="post">
+		<div class="MsgFlash">
+			<span th:text="${MensagemFlash}" th:if="${MensagemFlash != null}"></span>
+		</div>
+
+		<form action="/SalvaAcessoFuncionario" method="post">
 			
 			<input type="hidden" name="status" value="true"/>
 			<input type="hidden" id="TipoPerfil" name="TipoPerfil" value="02">

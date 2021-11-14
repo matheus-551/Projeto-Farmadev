@@ -6,18 +6,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 public class Funcionario {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@Column(nullable = false)
+	@NotBlank(message = "Digite um nome válido")
 	private String NomeCompleto;
+	
 	@Column(unique = true, nullable = false, length = 11)
+	@CPF(message = "CPF inválido")
 	private String cpf;
+	
 	@Column(unique = true, nullable = false)
+	@Pattern(regexp="[F,M,V]{3}\\d{4}", message="Contrato inválido")
 	private String IdentificacaoContrato;
+	
 	private Endereco endereco;
 	@OneToOne
 	private Acesso acesso;

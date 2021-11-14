@@ -18,6 +18,16 @@ public class FuncionarioService {
 		Funcionario funcionario = this.funcionarioRepository.getById(id);
 		return funcionario;
 	}
+	/*
+	//Busca o email existente
+	public boolean VerificaIdentificacaoContrato(String IdentificacaoContrato) {
+		return this.funcionarioRepository.existsByIdentificacaoContrato(IdentificacaoContrato);
+	}*/
+	
+	//Busca o cpf existente
+	public boolean VerificaCpfExistente(String cpf) {
+		return this.funcionarioRepository.existsByCpf(cpf);
+	}
 	
 	//Realiza a busca do funcionario através do acesso
 	public Funcionario BuscaFuncionarioAcesso(Acesso acesso) {

@@ -11,9 +11,13 @@
 
    <main>
         <h1>Informações pessoais</h1>
+        
+        <div class="MsgFlash">
+			<span th:text="${MensagemFlash}" th:if="${MensagemFlash != null}"></span>
+		</div>
 
         <form action="/SalvaCliente" method="post">
-        	<input type="hidden" name="acesso" th:value="${AcessoObjct.id}"/>  
+        	<input type="hidden" name="acesso" th:value="${session.AcessoObjct.id}"/>  
             
             <label for="NomeCompleto">Nome Completo</label>
             <input type="text" name="NomeCompleto" required>
