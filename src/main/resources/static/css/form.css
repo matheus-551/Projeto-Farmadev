@@ -7,6 +7,18 @@
     font-family: "Roboto", sans-serif;
 }
 
+.MsgFlash {
+    width: 80%;
+
+    padding: 10px;
+
+    text-align: center;
+    
+    border: unset #fa2e2e;
+    border-radius: 4px;
+    background-color: #fa2e2ec2;
+}
+
 .link {
     margin-top: 4px;
     text-decoration: none;
@@ -15,16 +27,20 @@
 }
 
 body {
-    background-image: linear-gradient(to right, rgb(12, 45, 106), rgb(169, 180, 201));
-    color: white;
-    font-weight: 500;
-    display: flex;
     min-height: 100vh;
-    min-width: 100vw;
+    min-width: 100vh;
+    
+    display: flex;
+	overflow: visible;
+
+    font-weight: 500;
+    
+    color: #ffff;
+	background-image: linear-gradient(to right, rgb(12, 45, 106), rgb(169, 180, 201));
 }
 
 main {
-    width: 50vw;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,71 +49,41 @@ main {
 
 main h1 {
     color: #fbfbfb;
-    font-size: 3rem;
+    font-size: 40px;
     margin-bottom: 1rem;
     text-align: center;
 }
 
-main.social-media {
-    display: flex;
-    align-content: center;
-}
+main .container {
+    width: 50%;
+    height: 50%;
+    
+    padding: 6px;
 
-main .social-media a {
-    text-decoration: none;
-}
-
-main .social-media img {
-    width: 30px;
-    margin-left: 2rem;
-}
-
-main .social-media a:first-child img {
-    margin-left: 0;
-}
-
-main .alternative {
-    margin-top: 1rem;
-}
-
-
-main .alternative span {
-    font-size: 1.0rem;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.3); 
-    position: relative;
-}
-
-main .alternative span::before, main .alternative span::after {
-    position: absolute;
-    content: '';
-    height: 1px;
-    width: 100px;
-    bottom: 50%;
-    right: 30px;
-    background: rgba(255, 255, 255, 0.3);
-}
-main .alternative span::after {
-    left: 30px;
-}
-
-main form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-main form label {
+form {
+    width: 100%;
+  
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-main form label span {
-    font-size: 1rem;
-    margin-top: 1rem;/* teste */
-}
+form label {
+    padding: 4px;
+    margin-top: 4px;
 
-/* para trocar cor e espaçamentos das box */
+    position: relative;
+    left: 15px;
+
+    align-self: start;
+}
 
 main form input {
     background: #161923;
@@ -116,8 +102,6 @@ main form input[type="checkbox"] {
     background: #161923;
 }
 
-/* codigo para o cadastro trocar de cor */
-
 main form input[type="submit"] {
     cursor: pointer;
     width: 50%;
@@ -130,55 +114,20 @@ main form input[type="submit"] {
     transition: all .3s ease-in-out;
 }
 
-
-/* codigo para o cadastro trocar de cor */
-
 main form input[type="submit"]:hover {
     background: #5952d4;
 }
 
-section.images {
-    width: 30vw;
-    padding: 2rem;
+.images {
+    width: 50%;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    /*background-color: coral;*/
 }
 
-section.images img {
-    width: 150%;
+.images img {
+    width: 100%;
 }
-
-
-@media only screen and (min-width: 900px) and (max-width: 1200px) {
-    section.images img {
-        width: 110%;
-    }
-
-    section.images .circle {
-        clip-path: circle(35% at right 80%);
-    }
-}
-
-@media only screen and (max-width: 900px) {
-    section.images {
-        display: none;
-        visibility: hidden;
-    }
-
-    main {
-        width: 100vw;
-    }
-}
-
-@media only screen and (max-width: 450px) {
-    main h1 {
-        font-size: 2rem;
-    }
-
-    main .alternative span {
-        font-size: 0.8rem;
-    }
-
-    main form label span, main form input[type="submit"] {
-        font-size: 1rem;
-    }
-}
-

@@ -30,7 +30,7 @@
                 </span>
                 <span>
                     <h4>Identificação de Contrato</h4>
-                	<span th:text="${session.FuncionarioLogado.IdentificacaoContrato}"></span>
+                	<span th:text="${session.FuncionarioLogado.contrato}"></span>
                 </span>
   
             </div>
@@ -57,8 +57,8 @@
                 </span>
             </div>
             <div class="GroupButton">
-                <a th:href="|/Admin/AlteraDados?id=${session.FuncionarioLogado.id}|">Alterar dados</a> ||
-                <a th:href="|/DesabilitarAcesso?id=${session.FuncionarioLogado.acesso.id}|">Desativar perfil</a>
+                <a id="ButtonAlter" th:href="|/Admin/AlteraDados?id=${session.FuncionarioLogado.id}|">Alterar dados</a> 
+                <a id="ButtonDell" th:href="|/DesabilitarAcesso?id=${session.FuncionarioLogado.acesso.id}|">Desativar perfil</a>
             </div>
         </div>
     </main>

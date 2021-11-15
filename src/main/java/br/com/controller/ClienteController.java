@@ -29,10 +29,11 @@ public class ClienteController {
 	
 	//Realiza a chamada do metódo service que faz a persistência no BD
 	@PostMapping("/SalvaCliente")
-	public String SalvarCliente(@Valid Cliente cliente, BindingResult result, Endereco endereco, HttpSession session, RedirectAttributes ra) {		
+	public String SalvarCliente(@Valid Cliente cliente, BindingResult result,Endereco endereco, HttpSession session, RedirectAttributes ra) {		
 		
 		if(result.hasErrors()) {
 			ra.addFlashAttribute("MensagemFlash", result.getAllErrors().get(0).getDefaultMessage());
+			
 			return"redirect:/CadastroPerfilCliente";
 		}else if(this.clienteService.VerificaEmailExistente(cliente.getEmail()) == true) {
 			ra.addFlashAttribute("MensagemFlash", "Já existe um usuário cadastrado com esse email");

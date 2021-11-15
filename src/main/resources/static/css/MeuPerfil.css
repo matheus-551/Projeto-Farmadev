@@ -45,7 +45,27 @@ main {
 }
 
 
+.GroupButton {
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-evenly;
+
+    /*border: 1px solid black;*/
+}
+
 .GroupButton a{
-	text-decoration: none;
+    padding: 10px;
+    text-decoration: none;
 	color: #000000;   
+}
+
+#ButtonAlter {
+    color: #ffff;
+    background: #3D5787;
+}
+
+#ButtonDell {
+    background: #E74424;
+    color: #ffff;
 }

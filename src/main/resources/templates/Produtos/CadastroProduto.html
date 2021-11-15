@@ -2,54 +2,64 @@
 <html lang="pt-br" xmlns:th="www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Farmadev</title>
+	<link rel="stylesheet" href="../css/form.css">
 </head>
 <body>
+	<main>
+		<div class="container">
+			<h1>Produtos</h1>
+		
+			<form action="/SalvaProduto" method="post" th:object="${ProdutoObj}">
+			
+				<input type="hidden" th:field="*{id}">
+				<input type="hidden" th:field="*{status}" value="true">
+			
+				<label for="NomeProduto">Nome do Medicamento: </label>
+				<input type="text" th:field="*{NomeProduto}" required>
+				
+				<label for="tipoMedicamento">Tipo do medicamento: </label>
+				<select th:field="*{tipoMedicamento}">
+					<option value=""></option>
+					<option th:each="TM : ${ListaTipoMedicamento}" th:text="${TM}" th:value="${TM}">
+				</select>
+				
+				<label for="TipoTarja">Tipo da tarja: </label>
+				<input type="text" th:field="*{TipoTarja}" required>
+				
+				<label for="preco">Preço: </label>
+				<input type="text" th:field="*{preco}">
+				
+				<label for="estoque">Estoque: </label>
+				<input type="number" th:field="*{estoque}" min="0" max="999">
+				
+				<label for="lote">Lote: </label>
+				<input type="text" th:field="*{lote}" required>
+				
+				<label for="categoria">Categoria :</label>
+				<select th:field="*{categoria}">
+					<option value=""></option>
+					<option th:each="ListaCategoria : ${ListCategorias}" th:text="${ListaCategoria.NomeCategoria}" th:value="${ListaCategoria.id}"></option>
+				</select>
+				
+				<label for="fornecedor">Fornecedor: </label>
+				<select th:field="*{fornecedor}">
+					<option value=""></option>
+					<option th:each="ListaFornecedor : ${ListFornecedor}" th:text="${ListaFornecedor.NomeFornecedor}" th:value="${ListaFornecedor.id}"></option>
+				</select>
+				
+				<label for="descricao">Descrição :</label>
+				<textarea th:field="*{descricao}" maxLength="3000"></textarea>
+				
+				<input type="submit" value="Salvar">
+			</form>
+		</div>
+	</main>
 	
-	<h1>Produtos</h1>
-
-	<form action="/SalvaProduto" method="post" th:object="${ProdutoObj}">
-	
-		<input type="hidden" th:field="*{id}">
-		<input type="hidden" th:field="*{status}" value="true">
-	
-		<label for="NomeProduto">Nome do Medicamento: </label>
-		<input type="text" th:field="*{NomeProduto}" required>
-		
-		<label for="tipoMedicamento">Tipo do medicamento: </label>
-		<select th:field="*{tipoMedicamento}">
-			<option value=""></option>
-			<option th:each="TM : ${ListaTipoMedicamento}" th:text="${TM}" th:value="${TM}">
-		</select>
-		
-		<label for="TipoTarja">Tipo da tarja: </label>
-		<input type="text" th:field="*{TipoTarja}" required>
-		
-		<label for="preco">Preço: </label>
-		<input type="text" th:field="*{preco}">
-		
-		<label for="estoque">Estoque: </label>
-		<input type="number" th:field="*{estoque}" min="0" max="999">
-		
-		<label for="lote">Lote: </label>
-		<input type="text" th:field="*{lote}" required>
-		
-		<label for="categoria">Categoria :</label>
-		<select th:field="*{categoria}">
-			<option value=""></option>
-			<option th:each="ListaCategoria : ${ListCategorias}" th:text="${ListaCategoria.NomeCategoria}" th:value="${ListaCategoria.id}"></option>
-		</select>
-		
-		<label for="fornecedor">Fornecedor: </label>
-		<select th:field="*{fornecedor}">
-			<option value=""></option>
-			<option th:each="ListaFornecedor : ${ListFornecedor}" th:text="${ListaFornecedor.NomeFornecedor}" th:value="${ListaFornecedor.id}"></option>
-		</select>
-		
-		<label for="descricao">Descrição :</label>
-		<textarea th:field="*{descricao}" maxLength="3000"></textarea>
-		
-		<input type="submit" value="Salvar">
-	</form>
+	<section class="images">
+     	<img src="../img/LogotipoFarmadev1.5.png">  
+    </section>
 </body>
 </html>

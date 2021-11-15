@@ -27,7 +27,7 @@ public class Funcionario {
 	
 	@Column(unique = true, nullable = false)
 	@Pattern(regexp="[F,M,V]{3}\\d{4}", message="Contrato inválido")
-	private String IdentificacaoContrato;
+	private String contrato;
 	
 	private Endereco endereco;
 	@OneToOne
@@ -61,12 +61,12 @@ public class Funcionario {
 		this.cpf = cpf;
 	}
 
-	public String getIdentificacaoContrato() {
-		return IdentificacaoContrato;
+	public String getContrato() {
+		return contrato;
 	}
 
-	public void setIdentificacaoContrato(String identificacaoContrato) {
-		IdentificacaoContrato = identificacaoContrato;
+	public void setContrato(String contrato) {
+		this.contrato = contrato;
 	}
 	
 	public Endereco getEndereco() {
@@ -87,7 +87,7 @@ public class Funcionario {
 
 	@Override
 	public String toString() {
-		return "Funcionario [id=" + id + ", NomeCompleto=" + NomeCompleto + ", cpf=" + cpf + ", IdentificacaoContrato="
-				+ IdentificacaoContrato + ", endereco=" + endereco + ", acesso=" + acesso + "]";
+		return "Funcionario [id=" + id + ", NomeCompleto=" + NomeCompleto + ", cpf=" + cpf + ", contrato="
+				+ contrato + ", endereco=" + endereco + ", acesso=" + acesso + "]";
 	}
 }

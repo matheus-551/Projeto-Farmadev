@@ -38,6 +38,10 @@ public class FuncionarioController {
 			ra.addFlashAttribute("MensagemFlash", "Já existe um usuário cadastrado com esse CPF");
 			
 			return"redirect:/CadastroPerfilFuncionario";
+		}else if(this.funcionarioService.VerificaIdentificacaoContrato(funcionario.getContrato()) == true) {
+			ra.addFlashAttribute("MensagemFlash", "Contrato já cadastrado");
+			
+			return"redirect:/CadastroPerfilFuncionario";
 		}else {
 			funcionario.setEndereco(endereco);
 			this.funcionarioService.SalvaFuncionario(funcionario);

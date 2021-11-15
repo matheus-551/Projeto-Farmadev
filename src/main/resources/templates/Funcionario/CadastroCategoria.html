@@ -2,22 +2,28 @@
 <html lang="pt-br" xmlns:th="www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Farmadev</title>
+	<link rel="stylesheet" href="../css/form.css">
 </head>
 <body>
-	<header>
-		<h1>Categoria</h1>
-	</header>
 	<main>
-		<form action="/SalvaCategoria" method="post" th:object="${CategoriaObj}">
-			
-			<input type="hidden" th:field="*{id}">
-			
-			<label for="NomeCategoria">Mome da Categoria</label>
-			<input type="text" th:field="*{NomeCategoria}"/>
-			
-			<input type="submit" value="Salvar"> 
-		</form>
+		<div class="container">
+			<h1>Categoria</h1>
+			<form action="/SalvaCategoria" method="post" th:object="${CategoriaObj}">
+				
+				<input type="hidden" th:field="*{id}">
+				
+				<label for="NomeCategoria">Mome da Categoria</label>
+				<input type="text" th:field="*{NomeCategoria}"/>
+				
+				<input type="submit" value="Salvar"> 
+			</form>
+		</div>
 	</main>
+	<section class="images">
+     	<img src="../img/LogotipoFarmadev1.5.png">  
+    </section>
 </body>
 </html>

@@ -19,6 +19,10 @@ public class ProdutoService {
 		return this.produtoRepository.findAll();
 	}
 	
+	public List<Produto>BuscaProdutoNome(String NomeProduto){
+		return this.produtoRepository.findProdutoByNomeProduto(NomeProduto);
+	}
+	
 	//Busca Produto por id
 	public Produto BuscaPorId(Integer id) {
 		Produto produto = this.produtoRepository.getById(id);

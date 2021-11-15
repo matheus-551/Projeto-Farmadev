@@ -54,7 +54,7 @@ public class ProdutoController {
 		this.produtoService.SalvaProduto(produto);
 		return"redirect:/Admin/ProdutoFuncionario";
 	}
-	
+		
 	//Altera o produto
 	@GetMapping("/AlteraProduto")
 	public String AlteraPrduto(Integer id, Model model) {

@@ -22,7 +22,7 @@ public class Cliente {
 	private Integer id;
 	
 	@Column(nullable = false)
-	@NotBlank(message = "Informe um nome valido")
+	@NotBlank(message = "Preencha o campo de Nome corretamente")
 	private String NomeCompleto;
 	
 	@Column(unique = true, nullable = false, length = 11)

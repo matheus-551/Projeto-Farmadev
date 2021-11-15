@@ -1,39 +1,25 @@
 package br.com.model;
 
 import javax.persistence.Embeddable;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Embeddable
 public class Endereco {
 	
-	@NotNull
-	@Size(min = 8, max = 8, message = "CEP Inválido")
-	private Integer cep;
-	
-	@NotBlank
+	private String cep;
 	private String rua;
-	
-	@NotBlank
 	private String bairro;
-	
-	@NotNull
-	@Size(max = 5, message = "No maximo 5 digitos")
-	private Integer numero;
-	
+	private Integer numero;	
 	private String Complemento;
 	
 	public Endereco() {
 		
 	}
 
-	public Integer getCep() {
+	public String getCep() {
 		return cep;
 	}
 
-	public void setCep(Integer cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 

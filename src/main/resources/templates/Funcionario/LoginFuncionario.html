@@ -9,24 +9,23 @@
 </head>
 <body>
 	<main>
-		<h1>Acesso do funcionário</h1>
-
-		<div class="MsgFlash">
-			<span th:text="${MensagemFlash}" th:if="${MensagemFlash != null}"></span>
-		</div>
+		<div class="container">
+			<h1>Acesso do funcionário</h1>
 	
-		<form action="/EfetuaLoginFuncionario" method="post">
-			<label for="login">Login</label> 
-			<input type="text" id="login" name="login">
-
-			<label for="senha">Senha</label> 
-			<input type="password" id="senha" name="senha"> 
-				
-			<input type="submit" value="Entrar" id="button">
-		</form>
-
-		<a class="link" href="/CadastroAcessoFuncionario">Cadastrar funcionário</a> 
+			<span class="MsgFlash" th:text="${MensagemFlash}" th:if="${MensagemFlash != null}"></span>
 		
+			<form action="/EfetuaLoginFuncionario" method="post">
+				<label for="login">Login</label> 
+				<input type="text" id="login" name="login">
+	
+				<label for="senha">Senha</label> 
+				<input type="password" id="senha" name="senha"> 
+					
+				<input type="submit" value="Entrar" id="button">
+			</form>
+	
+			<a class="link" href="/CadastroAcessoFuncionario">Cadastrar funcionário</a> 
+		</div>
 	</main>
 
 	<section class="images">

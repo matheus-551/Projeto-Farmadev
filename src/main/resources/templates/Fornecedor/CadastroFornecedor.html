@@ -2,22 +2,33 @@
 <html xmlns:th="www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Farmadev</title>
+	<link rel="stylesheet" href="../css/form.css">
 </head>
 <body>
-	<h1>Fornecedor</h1>
+	<main>
+		<div class="container">
+			<h1>Fornecedor</h1>
+			
+			<form action="/SalvaFornecedor" method="post" th:object="${FornecedorObj}">
+				
+				<input type="hidden" th:field="*{id}">
+				
+				<label for="NomeFornecedor">Nome do fornecedor: </label>
+				<input type="text" th:field="*{NomeFornecedor}" required>
+				
+				<label for="cnpj">Cnpj: </label>
+				<input type="text" th:field="*{cnpj}" required>
+				
+				<input type="submit" value="Salvar">	
+			</form>
+		</div>
+	</main>
 	
-	<form action="/SalvaFornecedor" method="post" th:object="${FornecedorObj}">
-		
-		<input type="hidden" th:field="*{id}">
-		
-		<label for="NomeFornecedor">Nome do fornecedor: </label>
-		<input type="text" th:field="*{NomeFornecedor}" required>
-		
-		<label for="cnpj">Cnpj: </label>
-		<input type="text" th:field="*{cnpj}" required>
-		
-		<input type="submit" value="Salvar">	
-	</form>
+	<section class="images">
+     	<img src="../img/LogotipoFarmadev1.5.png">  
+    </section>
 </body>
 </html>
