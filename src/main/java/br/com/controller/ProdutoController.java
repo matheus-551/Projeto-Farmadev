@@ -69,6 +69,8 @@ public class ProdutoController {
 	public String AlteraPrduto(Integer id, Model model) {
 		Produto produto = this.produtoService.BuscaPorId(id);
 		model.addAttribute("ProdutoObj", produto);
+		model.addAttribute("ListFornecedor", this.fornecedorService.ListaFornecedores());
+		model.addAttribute("ListCategorias", this.categoriaService.ListaCategorias());
 		return"Produtos/CadastroProduto";
 	}
 }
