@@ -25,6 +25,11 @@ public class FornecedorService {
 		return fornecedor;
 	}
 	
+	//Verifica se já existe este cnpj no banco
+	public boolean VerificaCnpjExistente(String cnpj) {
+		return this.fornecedorRepository.existsByCnpj(cnpj);
+	}
+	
 	//Realiza a persistencia do fornecedor no BD
 	public void SalvaFornecedor(Fornecedor fornecedor) {
 		this.fornecedorRepository.save(fornecedor);

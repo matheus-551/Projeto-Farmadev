@@ -45,7 +45,7 @@
                 </div>
                 <div class="FooterCard">
                     <span class="preco" th:text="${#numbers.formatCurrency(ListaProdutos.Preco)}"></span>
-                    <a id="BtnComprar" href="#">Comprar Agora</a>
+                    <a id="BtnComprar" th:href="|/Client/FinalizarCompra?id=${ListaProdutos.id}|">Comprar Agora</a>
                 </div>
             </div>
         </div>

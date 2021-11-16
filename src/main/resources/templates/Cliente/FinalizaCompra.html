@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmadev</title>
+    <link rel="stylesheet" type="text/css" href="../css/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="../css/FinalizaCompra.css">
+</head>
+<body>
+    <header>
+        <div class="ContainerLogo">
+            <img class="logo" src="../img/LogotipoFarmadev1.5.png" alt="Logo da Farmadev">
+        </div>
+        <div class="NavBar">
+            <div class="dropdown">
+                <a class="LinkNav" href="/Client/HomePageCliente">Voltar</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="cabecalho">
+                <h1>Finalizar Compra</h1>
+                
+                 <span class="MsgFlash" th:text="${MensagemFlash}" th:if="${MensagemFlash != null}"></span>
+            </div>
+
+            <form action="/SalvaVenda" method="post">
+                <div class="ContainerForm">
+                    <h4>Dados Pessoais</h4>
+                    
+                    <div class="SectionHeader">
+                        <div class="LeftItems">
+                            <input type="hidden" name="cliente" th:value="${session.ClienteLogado.id}">
+                            <input type="hidden" name="produto" th:value="${ProdutoObj.id}"/>
+                            
+                            <label for="NomeCompleto">Nome completo: </label>
+                            <input type="text" name="NomeCompleto" th:value="${session.ClienteLogado.NomeCompleto}">
+                            
+                            <label for="cpf">CPF: </label>                
+                            <input type="text" id="cpf" name="cpf" th:value="${session.ClienteLogado.cpf}" required>                     
+                            
+                            <label for="email">Email: </label>
+                            <input type="email" id="email" name="email" th:value="${session.ClienteLogado.email}" required>
+                            
+                            <label for="DataNascimento">Data de Nascimento: </label>
+                            <input type="date" id="DataNascimento" name="DataNascimento" th:value="${session.ClienteLogado.DataNascimento}">
+                        
+                        </div>
+                        <div class="RightItems">
+                            <label for="cep">CEP: </label>
+                            <input type="text" id="cep" name="cep" th:value="${session.ClienteLogado.endereco.cep}">
+                
+                            <label for="rua">Rua: </label>
+                            <input type="text" id="rua" name="rua" th:value="${session.ClienteLogado.endereco.rua}">
+                            
+                            <label for="bairro">Bairro: </label>
+                            <input type="text" id="bairro" name="bairro" th:value="${session.ClienteLogado.endereco.bairro}"> 
+                
+                            <label for="numero">Número</label>
+                            <input type="text" id="numero" name="numero" th:value="${session.ClienteLogado.endereco.numero}">
+                            
+                            <label for="complemento">Complemento: </label>
+                            <input type="text" id="complemento" name="complemento" th:value="${session.ClienteLogado.endereco.complemento}">
+                        </div>  
+                    </div>
+
+                    <h4>Dados da compra </h4>
+
+                    <div class="SectionBody">
+                        <div class="ControlGroup">  
+                        	<h4>Nome do produto</h4>
+              				<span th:text="${ProdutoObj.NomeProduto}"></span>
+                        </div>
+                        
+                        <div class="ControlGroup">
+                            <label for="formaPagamento">Forma de pagamento :</label>
+                            <select>
+                                <option>Dinheiro</option>
+                            </select>
+                        </div>
+
+                        <div class="ControlGroup">
+                            <label for="ValorPago">Valor pago: </label>
+                            <input type="text" pattern="^(\d{1,10})((\.)\d{1,2})?$" name="ValorPago">
+                        </div>
+                    </div>
+                    <div class="SectionFooter">
+                    	<div class="infoPreco">                       	
+                        	<h4>Valor Total</h4>
+                        	<span class="preco" th:text="${#numbers.formatCurrency(ProdutoObj.Preco)}"></span>
+                        </div>
+                        <button type="submit" class="btn">Finalizar Compra</button>
+                    </div>
+                    <!--FECHAMENTO DO CONTAINERFORM-->
+                </div>
+            </form>
+            <!--FECHAMENTO DO CONTAINER-->
+        </div>
+    </main>
+
+</body>
+</html>

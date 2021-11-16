@@ -8,25 +8,41 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Produto {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@Column(nullable = false)
+	@NotBlank(message = "O preenchimento de todos os campos é obrigatório")
 	private String NomeProduto;
+	
 	@Column(nullable = false, length = 6000)
+	@NotBlank(message = "O preenchimento de todos os campos é obrigatório")
 	private String descricao;
+	
 	@Enumerated(EnumType.STRING)
 	private TipoMedicamento tipoMedicamento;
+	
 	@Column(nullable = false)
+	@NotBlank(message = "O preenchimento de todos os campos é obrigatório")
 	private String TipoTarja;
+	
 	@Column(nullable = false)
+	@NotNull(message = "Informe um valor válido")
 	private double preco;
+	
 	@Column(nullable = false)
+	@NotNull(message = "Informe um valor válido")
 	private Integer estoque;
+	
+	@NotBlank(message = "O preenchimento de todos os campos é obrigatório")
 	private String lote;
+	
 	@Column(nullable = false)
 	private boolean status;
 	@ManyToOne

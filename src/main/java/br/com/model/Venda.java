@@ -2,7 +2,6 @@ package br.com.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +10,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import jdk.jfr.Timestamp;
@@ -23,8 +21,8 @@ public class Venda {
 	private Integer id;
 	@ManyToOne
 	private Cliente cliente;
-	@ManyToMany
-	private List<Produto> produto;
+	@ManyToOne
+	private Produto produto;
 	@Enumerated(EnumType.STRING )
 	private FormaPagamento formaPagamento;
 	@Column(nullable = false)
@@ -56,11 +54,11 @@ public class Venda {
 		this.cliente = cliente;
 	}
 
-	public List<Produto> getProduto() {
+	public Produto getProduto() {
 		return produto;
 	}
 
-	public void setProduto(List<Produto> produto) {
+	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
 

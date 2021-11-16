@@ -5,15 +5,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.br.CNPJ;
 
 @Entity
 public class Fornecedor {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@Column(nullable = false)
+	@NotBlank(message = "O preenchimento de todos os campos é obrigatório")
 	private String NomeFornecedor;
+	
 	@Column(unique = true ,nullable = false, length = 14)
+	@CNPJ(message = "Cnpj inválido")
 	private String cnpj;
 	
 	public Fornecedor() {

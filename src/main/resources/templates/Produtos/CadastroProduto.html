@@ -12,6 +12,8 @@
 		<div class="container">
 			<h1>Produtos</h1>
 		
+			<span class="MsgFlash" th:text="${MensagemFlash}" th:if="${MensagemFlash != null}"></span>
+		
 			<form action="/SalvaProduto" method="post" th:object="${ProdutoObj}">
 			
 				<input type="hidden" th:field="*{id}">
@@ -22,7 +24,6 @@
 				
 				<label for="tipoMedicamento">Tipo do medicamento: </label>
 				<select th:field="*{tipoMedicamento}">
-					<option value=""></option>
 					<option th:each="TM : ${ListaTipoMedicamento}" th:text="${TM}" th:value="${TM}">
 				</select>
 				
@@ -30,7 +31,7 @@
 				<input type="text" th:field="*{TipoTarja}" required>
 				
 				<label for="preco">Preço: </label>
-				<input type="text" th:field="*{preco}">
+				<input type="text" pattern="^(\d{1,10})((\.)\d{1,2})?$" th:field="*{preco}" title="O preço deve ser digitado com '.' no lugar da ',' ">
 				
 				<label for="estoque">Estoque: </label>
 				<input type="number" th:field="*{estoque}" min="0" max="999">

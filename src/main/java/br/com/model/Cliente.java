@@ -34,7 +34,7 @@ public class Cliente {
 	private String email;
 	
 	@DateTimeFormat(pattern= "yyyy-MM-dd")
-	@Past(message = "Informe uma data de nascimento valida")
+	@Past(message = "Informe uma data de nascimento válida")
 	private LocalDate DataNascimento;
 	private Endereco endereco;
 	@OneToOne

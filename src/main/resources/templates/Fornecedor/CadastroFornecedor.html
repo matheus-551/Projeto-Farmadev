@@ -12,6 +12,8 @@
 		<div class="container">
 			<h1>Fornecedor</h1>
 			
+			<span class="MsgFlash" th:text="${MensagemFlash}" th:if="${MensagemFlash != null}"></span>
+			
 			<form action="/SalvaFornecedor" method="post" th:object="${FornecedorObj}">
 				
 				<input type="hidden" th:field="*{id}">

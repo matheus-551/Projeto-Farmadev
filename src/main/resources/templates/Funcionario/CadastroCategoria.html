@@ -11,6 +11,9 @@
 	<main>
 		<div class="container">
 			<h1>Categoria</h1>
+			
+			<span class="MsgFlash" th:text="${MensagemFlash}" th:if="${MensagemFlash != null}"></span>
+			
 			<form action="/SalvaCategoria" method="post" th:object="${CategoriaObj}">
 				
 				<input type="hidden" th:field="*{id}">
