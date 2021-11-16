@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import jdk.jfr.Timestamp;
 
@@ -19,16 +20,27 @@ public class Venda {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@ManyToOne
+	@NotNull
 	private Cliente cliente;
+	
 	@ManyToOne
+	@NotNull
 	private Produto produto;
+	
 	@Enumerated(EnumType.STRING )
+	@NotNull(message = "O campo forma de pagamento deve ser preenchido")
 	private FormaPagamento formaPagamento;
+	
 	@Column(nullable = false)
+	@NotNull(message = "Preencha o campo de valor total")
 	private double ValorTotal;
+	
 	@Column(nullable = false)
+	@NotNull(message = "preencha o campo de valor a ser pago")
 	private double ValorPago;
+	
 	@Timestamp
 	private LocalDate DataVenda;
 	@Timestamp

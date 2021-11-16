@@ -21,6 +21,7 @@ public class VendaService {
 	
 	//Salva venda
 	public void SalvaVenda(Venda venda) {
+
 		venda.setDataVenda(LocalDate.now());
 		venda.setHoraVenda(LocalTime.now());
 		

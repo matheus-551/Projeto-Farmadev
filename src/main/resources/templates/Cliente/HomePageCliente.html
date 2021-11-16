@@ -30,6 +30,7 @@
         </div>
     </header>
     <main>
+    	<span class="MsgFlash" th:text="${MensagemFlash}" th:if="${MensagemFlash != null}"></span>
         <div class="ContainerCard">
   			<div class="Card" th:each="ListaProdutos : ${Produtos}">
                 <h3 th:text="${ListaProdutos.NomeProduto}"></h3>

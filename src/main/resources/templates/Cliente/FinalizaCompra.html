@@ -23,11 +23,10 @@
         <div class="container">
             <div class="cabecalho">
                 <h1>Finalizar Compra</h1>
-                
-                 <span class="MsgFlash" th:text="${MensagemFlash}" th:if="${MensagemFlash != null}"></span>
             </div>
 
             <form action="/SalvaVenda" method="post">
+                
                 <div class="ContainerForm">
                     <h4>Dados Pessoais</h4>
                     
@@ -76,8 +75,8 @@
                         
                         <div class="ControlGroup">
                             <label for="formaPagamento">Forma de pagamento :</label>
-                            <select>
-                                <option>Dinheiro</option>
+                            <select name=formaPagamento>
+                                <option th:each="Fp : ${ListaFormaPagamento}" th:text="${Fp}" th:value="${Fp}"></option>
                             </select>
                         </div>
 

@@ -81,6 +81,24 @@
     background: #3D5787;
 }
 
+.MsgFlash {
+    width: 400px;
+    padding: 10px;
+
+    position: fixed;
+    left: 68%;
+    top: 5%;
+    z-index: 1;
+
+    text-align: center;
+    
+    border: unset #fa2e2e;
+    border-radius: 4px;
+
+    color: #ffff;
+    background-color: #fa2e2ec2;
+}
+
 body {
     width: 100%;
 }
