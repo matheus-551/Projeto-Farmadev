@@ -45,13 +45,14 @@ public class VendaController {
 	
 	@PostMapping("/SalvaVenda")
 	public String SalvarVenda(@Valid Venda venda, BindingResult result, Produto produto, Cliente cliente, RedirectAttributes ra, Model model) {
-				
+		
 		//Recebe o cliente e verifica seu id
 		cliente = this.clienteService.BuscaPorId(cliente.getId());
 		venda.setCliente(cliente);
 		
 		//Busca o produto e verifica seu id
 		produto = this.produtoService.BuscaPorId(produto.getId());	
+		venda.setProduto(produto);
 		
 		//seta o valor do produto como valor total
 		venda.setValorTotal(produto.getPreco());
@@ -61,9 +62,6 @@ public class VendaController {
 		if(result.hasErrors()) {
 			ra.addFlashAttribute("MensagemFlash", result.getAllErrors().get(0).getDefaultMessage());
 					
-			return"redirect:/Client/HomePageCliente";
-		}else if(venda.getValorPago() < venda.getValorTotal()){
-			ra.addFlashAttribute("MensagemFlash", "Ocorreu um erro ao tentar realizar a compra !!");
 			return"redirect:/Client/HomePageCliente";
 		}else {
 			this.vendaService.SalvaVenda(venda);

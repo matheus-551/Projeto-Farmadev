@@ -34,9 +34,4 @@ public class FornecedorService {
 	public void SalvaFornecedor(Fornecedor fornecedor) {
 		this.fornecedorRepository.save(fornecedor);
 	}
-	
-	//Realiza a deleção do fornecedor
-	public void DeletaFornecedor(Integer id) {
-		this.fornecedorRepository.deleteById(id);
-	}
 }

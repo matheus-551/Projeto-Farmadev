@@ -34,6 +34,7 @@
                         <div class="LeftItems">
                             <input type="hidden" name="cliente" th:value="${session.ClienteLogado.id}">
                             <input type="hidden" name="produto" th:value="${ProdutoObj.id}"/>
+                            <input type="hidden" name="ValorTotal" th:value="${ProdutoObj.Preco}">
                             
                             <label for="NomeCompleto">Nome completo: </label>
                             <input type="text" name="NomeCompleto" th:value="${session.ClienteLogado.NomeCompleto}">
@@ -82,7 +83,7 @@
 
                         <div class="ControlGroup">
                             <label for="ValorPago">Valor a pagar: </label>
-                            <input type="text" pattern="^(\d{1,10})((\.)\d{1,2})?$" name="ValorPago">
+                            <input type="text" pattern="^(\d{1,10})((\.)\d{1,2})?$" name="ValorPago" required>
                         </div>
                     </div>
                     <div class="SectionFooter">

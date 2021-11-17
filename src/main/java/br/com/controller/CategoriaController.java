@@ -47,11 +47,4 @@ public class CategoriaController {
 		model.addAttribute("CategoriaObj", categoria);
 		return"Funcionario/CadastroCategoria";
 	}
-	
-	//Realiza a deleção da categoria
-	@GetMapping("/DeletaCategoria")
-	public String RealizaDelecaoCategoria(Integer id) {
-		this.categoriaService.DeletaCategoria(id);
-		return"redirect:/Admin/HomePageFuncionario";
-	}
 }

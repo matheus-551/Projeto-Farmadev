@@ -29,9 +29,4 @@ public class CategoriaService {
 	public void SalvaCategoria(Categoria categoria) {
 		this.categoriaRepository.save(categoria);
 	}
-	
-	//Exclui a categoria
-	public void DeletaCategoria(Integer id) {
-		this.categoriaRepository.deleteById(id);
-	}
 }

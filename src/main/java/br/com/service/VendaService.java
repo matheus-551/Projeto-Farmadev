@@ -19,6 +19,16 @@ public class VendaService {
 	@Autowired
 	private ProdutoService produtoService;
 	
+	public boolean VerificaValores(double ValorPago, double ValorTotal) {
+		if (ValorPago >= ValorTotal) {
+			System.out.println("ok");
+			return true;
+		}else {
+			System.out.println("Fudeu");
+			return false;
+		}
+	}
+	
 	//Salva venda
 	public void SalvaVenda(Venda venda) {
 

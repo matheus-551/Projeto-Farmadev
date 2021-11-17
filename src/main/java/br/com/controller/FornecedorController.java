@@ -56,10 +56,4 @@ public class FornecedorController {
 		model.addAttribute("FornecedorObj", fornecedor);
 		return"Fornecedor/CadastroFornecedor";
 	}
-	
-	@GetMapping("/DeletaFuncionario")
-	public String RealizaDelecaoFornecedor(Integer id) {
-		this.fornecedorService.DeletaFornecedor(id);
-		return"redirect:/Admin/FornecedorFuncionario";
-	}
 }
