@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="pt-br" xmlns:th="www.thymeleaf.org">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,24 +32,35 @@
         </div>
     </header>
     <main>
-    	<div class="Cabecalho">
-    		<h1>Produto</h1>
- 			<a class="addButtons" href="/Admin/CadastroProduto">Novo produto</a>
- 		</div>
- 		
- 		<div class="ContainerCards">
- 			<div class="Card" th:each="ListProduto : ${ListaProduto}">
- 				<h3 th:text="${ListProduto.NomeProduto}"></h3>
- 				
- 				<div class="FooterCard">
-	 				<span th:text="${#numbers.formatCurrency(ListProduto.Preco)}"></span>
-	 				
-	 				<div class="ButtonGroup">
-	 					<a th:href="|/AlteraProduto?id=${ListProduto.id}|">Editar</a>
-	 				</div>
- 				</div>
- 			</div>
- 		</div>
+    	<div class="ContainerTable">
+            <table>
+                <thead>
+                    <tr id="RowHeader">
+                        <th colspan="12">Vendas Realizadas</th>
+                    </tr>
+                    <tr>
+                        <th>Data da venda</th>
+                        <th>Hora da venda</th>
+                        <th>Cliente</th>
+                        <th>Produto</th>
+                        <th>Forma de pagamento</th>
+                        <th>Valor pago</th>
+                        <th>Valor Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="ListVenda : ${ListaVendas}">
+                        <td th:text="${ListVenda.DataVenda}"></td>
+                        <td th:text="${ListVenda.HoraVenda}"></td>
+                        <td th:text="${ListVenda.cliente.NomeCompleto}"></td>
+                        <td th:text="${ListVenda.Produto.NomeProduto}"></td>
+                        <td th:text="${ListVenda.formaPagamento}"></td>
+                        <td th:text="${#numbers.formatCurrency(ListVenda.ValorPago)}"></td>
+                        <td th:text="${#numbers.formatCurrency(ListVenda.ValorTotal)}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </main>
 </body>
 </html>

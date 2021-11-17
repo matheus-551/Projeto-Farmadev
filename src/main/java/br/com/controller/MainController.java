@@ -25,7 +25,8 @@ public class MainController {
 	
 	//Exibi a tela principal
 	@GetMapping("/")
-	public String ExibirIndex() {
+	public String ExibirIndex(Model model) {
+		model.addAttribute("ProdutoObj", this.produtoService.ListaQuatroProdutos());
 		return"index";
 	}
 	

@@ -2,6 +2,7 @@ package br.com.service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,14 @@ public class VendaService {
 	@Autowired
 	private ProdutoService produtoService;
 	
+	public List<Venda> ListaVendas() {
+		return this.vendaRepository.findAll();
+	}
+	
 	public boolean VerificaValores(double ValorPago, double ValorTotal) {
 		if (ValorPago >= ValorTotal) {
-			System.out.println("ok");
 			return true;
 		}else {
-			System.out.println("Fudeu");
 			return false;
 		}
 	}

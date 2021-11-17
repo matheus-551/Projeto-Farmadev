@@ -33,24 +33,24 @@
 	            <input type="date" id="DataNascimento" th:field="*{DataNascimento}">
 	
 				<label for="cep">cep</label>
-	            <input type="text" id="cep" name="cep">
+	            <input type="text" id="cep" name="cep" th:value="${session.ClienteLogado.endereco.cep}">
 	
 				<label for="rua">Rua</label>
-	            <input type="text" id="rua" name="rua">
+	            <input type="text" id="rua" name="rua" th:value="${session.ClienteLogado.endereco.rua}">
 				
 				<label for="bairro">Bairro</label>
-				<input type="text" id="bairro" name="bairro"> 
+				<input type="text" id="bairro" name="bairro" th:value="${session.ClienteLogado.endereco.bairro}"> 
 	
 				<label for="numero">Número</label>
-				<input type="text" id="numero" name="numero">
+				<input type="text" id="numero" name="numero" th:value="${session.ClienteLogado.endereco.numero}">
 				
 				<label for="complemento">Complemento</label>
-				<input type="text" id="complemento" name="complemento">  
+				<input type="text" id="complemento" name="complemento" th:value="${session.ClienteLogado.endereco.complemento}">  
 	
 	            <input type="submit" value="Alterar" id="button"> 
 	        </form>
 	      
-	        <a class="link" href="/admin/HomePageCliente">Voltar</a>
+	        <a class="link" href="/Client/MeuPerfil">Voltar</a>
     	</div>
     </main>
     

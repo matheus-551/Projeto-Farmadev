@@ -3,6 +3,8 @@ package br.com.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import br.com.model.Produto;
@@ -21,6 +23,10 @@ public class ProdutoService {
 	
 	public List<Produto>BuscaProdutoNome(String NomeProduto){
 		return this.produtoRepository.findProdutoByNomeProduto(NomeProduto);
+	}
+	
+	public Page<Produto>ListaQuatroProdutos(){
+		return this.produtoRepository.findAll(PageRequest.of(0, 4));
 	}
 	
 	//Busca Produto por id

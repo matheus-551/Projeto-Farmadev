@@ -30,24 +30,24 @@
 	            <input type="text" id="idContrato" th:field="*{contrato}" required>
 	            
 				<label for="cep">cep</label>
-	            <input type="text" id="cep" name="cep">
+	            <input type="text" id="cep" name="cep" th:value="${session.FuncionarioLogado.endereco.cep}">
 	
 				<label for="rua">Rua</label>
-	            <input type="text" id="rua" name="rua">
+	            <input type="text" id="rua" name="rua" th:value="${session.FuncionarioLogado.endereco.rua}">
 				
 				<label for="bairro">Bairro</label>
-				<input type="text" id="bairro" name="bairro"> 
+				<input type="text" id="bairro" name="bairro" th:value="${session.FuncionarioLogado.endereco.bairro}"> 
 	
 				<label for="numero">Número</label>
-				<input type="text" id="numero" name="numero">
+				<input type="text" id="numero" name="numero" th:value="${session.FuncionarioLogado.endereco.numero}">
 				
 				<label for="complemento">Complemento</label>
-				<input type="text" id="complemento" name="complemento">  
+				<input type="text" id="complemento" name="complemento" th:value="${session.FuncionarioLogado.endereco.complemento}">  
 	
 	            <input type="submit" value="Salvar" id="button"> 
 	        </form>
 	      
-	        <a class="link" href="/Adimn/MeuPerfil">Voltar</a>
+	        <a class="link" href="/Admin/MeuPerfil">Voltar</a>
     	</div>
     </main>
     

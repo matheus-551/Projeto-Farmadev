@@ -36,6 +36,12 @@ public class VendaController {
 		return FormaPagamento.values();
 	}
 	
+	@GetMapping("/Admin/VendaFuncionario")
+	public String ExibirVendaFuncionario(Model model) {
+		model.addAttribute("ListaVendas", this.vendaService.ListaVendas());
+		return"Vendas/VendasFuncionarios";
+	}
+	
 	@GetMapping("/Client/FinalizarCompra")
 	public String ExibirFinalizarCompra(Integer id, Model model) {
 		Produto produto = this.produtoService.BuscaPorId(id);
@@ -55,17 +61,13 @@ public class VendaController {
 		venda.setProduto(produto);
 		
 		//seta o valor do produto como valor total
-		/*
-		 * venda.setValorTotal(produto.getPreco());
-		 */
-
 		venda.setValorTotal(produto.getPreco());
 		
 		if(result.hasErrors()) {
 			ra.addFlashAttribute("MensagemFlash", result.getAllErrors().get(0).getDefaultMessage());
 					
 			return"redirect:/Client/HomePageCliente";
-		}else if(venda.getValorPago() < venda.getValorTotal()){
+		}else if(this.vendaService.VerificaValores(venda.getValorPago(), venda.getValorTotal()) != true){
 			ra.addFlashAttribute("MensagemFlash", "Ocorreu um problema ao tentar finalizar a compra");
 			
 			return"redirect:/Client/HomePageCliente";
