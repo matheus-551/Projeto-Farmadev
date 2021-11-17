@@ -55,13 +55,19 @@ public class VendaController {
 		venda.setProduto(produto);
 		
 		//seta o valor do produto como valor total
-		venda.setValorTotal(produto.getPreco());
+		/*
+		 * venda.setValorTotal(produto.getPreco());
+		 */
 
-		venda.setValorTotal(venda.getValorTotal() + produto.getPreco());
+		venda.setValorTotal(produto.getPreco());
 		
 		if(result.hasErrors()) {
 			ra.addFlashAttribute("MensagemFlash", result.getAllErrors().get(0).getDefaultMessage());
 					
+			return"redirect:/Client/HomePageCliente";
+		}else if(venda.getValorPago() < venda.getValorTotal()){
+			ra.addFlashAttribute("MensagemFlash", "Ocorreu um problema ao tentar finalizar a compra");
+			
 			return"redirect:/Client/HomePageCliente";
 		}else {
 			this.vendaService.SalvaVenda(venda);
