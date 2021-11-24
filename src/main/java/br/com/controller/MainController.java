@@ -44,9 +44,6 @@ public class MainController {
 		return"Funcionario/HomePageFuncionario";
 	}
 	
-	/*
-	 * CONCLUIR A FUNCIONALIDADE DE PESQUISA DE REMÉDIO
-	 * */
 	//Realiza a busca especifica
 	@PostMapping("**/PesquisaResultado")
 	public ModelAndView pesquisar(@RequestParam("nomePesquisa") String nomePesquisa) {
@@ -63,5 +60,10 @@ public class MainController {
 		}
 		
 		return mv;
+	}
+	
+	@GetMapping("/Sobre")
+	public String ExibirSobre() {
+		return"sobre";
 	}
 }
