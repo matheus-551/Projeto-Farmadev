@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmadev</title>
+    <link rel="stylesheet" type="text/css" href="../css/form.css">
+</head>
+<body>
+	<main>
+        <div class="container">
+            <h1>Nova Senha</h1>
+            
+            <form action="/SalvaAlteracaoSenha" method="post">
+                
+                <input type="hidden" name="id" th:value="${AcessoObj.id}">
+                <input type="hidden" name="login" th:value="${AcessoObj.login}">
+                <input type="hidden" name="TipoPerfil" th:value="${AcessoObj.TipoPerfil}">
+                
+                <label for="senha">Senha: </label> 
+                <input type="password" id="senha" name="senha">
+                    
+                <input type="submit" value="Salvar" id="button">
+            </form>
+        </div>
+
+	</main>
+
+	<section class="images">
+		<img src="../img/LogotipoFarmadev1.5.png" />
+	</section>
+</body>
+</html>

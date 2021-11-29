@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>Recuperação de senha</h1>
+	<h3>Olá <span th:text="${cliente.NomeCompleto}"></span></h3>
+	<p>Segue abaixo o link para criar sua nova senha</p>
+	<a th:href="|http://localhost:8080/Alterarsenha/${Acesso.id}|">Nova senha</a>	
+</body>
+</html>

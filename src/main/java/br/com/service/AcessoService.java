@@ -35,6 +35,16 @@ public class AcessoService {
 		}
 	}
 	
+	public Acesso BuscaAcessoLogin(String login) {
+		Acesso acesso = this.acessoRepository.findByLogin(login);
+		
+		if(acesso != null) {
+			return acesso;
+		}else {
+			return null;
+		}
+	}
+	
 	//Realiza a persistência do objeto "acesso" no BD
 	public void SalvaAcesso(Acesso acesso) {
 		this.acessoRepository.save(acesso);

@@ -5,9 +5,13 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.model.Acesso;
@@ -15,6 +19,7 @@ import br.com.model.Cliente;
 import br.com.model.Funcionario;
 import br.com.service.AcessoService;
 import br.com.service.ClienteService;
+import br.com.service.EmailService;
 import br.com.service.FuncionarioService;
 
 @Controller
@@ -28,6 +33,9 @@ public class AcessoController {
 	
 	@Autowired
 	private FuncionarioService funcionarioService;
+	
+	@Autowired
+	private EmailService emailService;
 	
 	//Exibi a tela de login do cliente
 	@GetMapping("/loginCliente")
@@ -145,6 +153,47 @@ public class AcessoController {
 	@GetMapping("/AcessoNegado")
 	public String AcessoNegado() {
 		return "redirect:/";
+	}
+	
+	@RequestMapping(path="/sendEmail", method = RequestMethod.GET)
+	public void AcessEmail(Cliente cliente) {
+		this.emailService.sendMail(cliente);
+	}
+	
+	//Exibi a tela de recuperar senha
+	@GetMapping("/RecuperaSenha")
+	public String ExibirRecuperaSenha() {
+		return"RecuperaSenha";
+	}
+	
+	@PostMapping("/EnviaRecuperaSenha")
+	public String RecuperaSenha(String login, RedirectAttributes ra) {
+		Acesso acesso = this.acessoService.BuscaAcessoLogin(login);
+		
+		if(acesso != null) {
+			ra.addFlashAttribute("MensagemFlash", "O link para recuperar sua conta foi enviado para seu email");
+			Cliente cliente = this.clienteService.BuscaClienteAcesso(acesso);
+			
+			this.AcessEmail(cliente);
+			return"redirect:/";
+		}else {
+			ra.addFlashAttribute("MensagemFlash", "Usuário não encontrado");
+			return"redirect:/RecuperaSenha";
+		}
+	}
+	
+	//Método que exibi o template de criar nova senha
+	@GetMapping("/Alterarsenha/{id}")
+	public String AlteraSenha(@PathVariable Integer id, Model model) {
+		Acesso acesso = this.acessoService.BuscaPorId(id);
+		model.addAttribute("AcessoObj", acesso);
+		return"NovaSenha";
+	}
+	
+	@PostMapping("/SalvaAlteracaoSenha")
+	public String SalvaAlteracaoSenha(Acesso acesso) {
+		this.acessoService.SalvaAcesso(acesso);
+		return"redirect:/";
 	}
 	
 	//Desabilita acesso

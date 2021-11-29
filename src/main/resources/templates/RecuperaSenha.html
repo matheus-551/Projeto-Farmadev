@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../css/form.css">
+</head>
+<body>
+	<main>
+        <div class="container">
+            <h1>Recuperar Senha</h1>
+            
+     		<span class="MsgFlash" th:text="${MensagemFlash}" th:if="${MensagemFlash != null}"></span>
+
+            <form action="/EnviaRecuperaSenha" method="post">
+                <label for="login">Login: </label> 
+                <input type="text" id="login" name="login">
+                    
+                <input type="submit" value="Entrar" id="button">
+            </form>
+            
+            <a class="link" href="/loginCliente">Voltar</a> 
+        </div>
+
+	</main>
+
+	<section class="images">
+		<img src="../img/LogotipoFarmadev1.5.png" />
+	</section>
+</body>
+</html>
